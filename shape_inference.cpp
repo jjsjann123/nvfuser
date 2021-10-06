@@ -1,6 +1,5 @@
-#include <torch/csrc/jit/codegen/cuda/type_inference.h>
+#include <torch/csrc/jit/codegen/cuda/shape_inference.h>
 
-#include <aten/src/ATen/AccumulateType.h>
 #include <c10/core/ScalarType.h>
 #include <torch/csrc/jit/codegen/cuda/instrumentation.h>
 #include <torch/csrc/jit/ir/constants.h>
@@ -16,42 +15,8 @@ namespace cuda {
 
 namespace {
 
-at::ScalarType toAccumulateType(const TensorTypePtr& op) {
-  TORCH_INTERNAL_ASSERT(
-      op->scalarType().has_value(), "Missing Type Information.");
-  return at::toAccumulateType(op->scalarType().value(), true /* is_cuda */);
-}
-
 bool hasTypeAndDevice(const TensorTypePtr& op) {
   return op->device().has_value() && op->scalarType().has_value();
-}
-
-TensorTypePtr getInputTensorType(
-    Node* node,
-    size_t index,
-    bool optional = false) {
-  auto tensor_type = node->input(index)->type()->cast<TensorType>();
-  if (optional && tensor_type == nullptr) {
-    return tensor_type;
-  }
-
-  // (not optional) implies (tensor_type not equal nullptr)
-  TORCH_CHECK(
-      optional || tensor_type != nullptr,
-      "Input ",
-      index,
-      " for operation ",
-      node->kind().toDisplayString(),
-      " needs to be a tensor.");
-
-  TORCH_CHECK(
-      hasTypeAndDevice(tensor_type),
-      "Input ",
-      index,
-      " for operation ",
-      node->kind().toDisplayString(),
-      " is missing Type or Device Information.");
-  return tensor_type;
 }
 
 /* NaiveTypePropagator
@@ -121,10 +86,19 @@ class NaiveTypePropagator {
       case aten::gelu:
       case aten::gelu_backward:
       case aten::silu:
-      case aten::tanh:
+      case aten::tanh: {
+        TORCH_CHECK(
+            hasTypeAndDevice(node->input(0)->type()->cast<TensorType>()),
+            "Type and device propagation has failed, or was not provided enough information.");
+        node->output()->setType(node->input(0)->type()->cast<TensorType>());
+        break;
+      }
       // TODO: rand_like should support cast.
       case aten::rand_like: {
-        node->output()->setType(getInputTensorType(node, 0));
+        TORCH_CHECK(
+            hasTypeAndDevice(node->input(0)->type()->cast<TensorType>()),
+            "Type and device propagation has failed, or was not provided enough information.");
+        node->output()->setType(node->input(0)->type()->cast<TensorType>());
         break;
       }
       // binary operations that forward meta info and broadcast shape:
@@ -143,8 +117,8 @@ class NaiveTypePropagator {
       case aten::add:
       case aten::sub: {
         const auto promoted_type = binary_broadcast_type(
-            getInputTensorType(node, 0, true),
-            getInputTensorType(node, 1, true));
+            node->input(0)->type()->cast<TensorType>(),
+            node->input(1)->type()->cast<TensorType>());
         node->output()->setType(promoted_type);
         break;
       }
@@ -153,8 +127,8 @@ class NaiveTypePropagator {
       case aten::__and__:
       case aten::__or__: {
         const auto promoted_type = binary_broadcast_type(
-            getInputTensorType(node, 0, true),
-            getInputTensorType(node, 1, true),
+            node->input(0)->type()->cast<TensorType>(),
+            node->input(1)->type()->cast<TensorType>(),
             node->input(0)->type()->cast<TensorType>()->scalarType() ==
                     at::ScalarType::Bool
                 ? at::ScalarType::Bool
@@ -166,8 +140,8 @@ class NaiveTypePropagator {
       case aten::__lshift__:
       case aten::__rshift__: {
         const auto promoted_type = binary_broadcast_type(
-            getInputTensorType(node, 0, true),
-            getInputTensorType(node, 1, true),
+            node->input(0)->type()->cast<TensorType>(),
+            node->input(1)->type()->cast<TensorType>(),
             at::ScalarType::Int);
         node->output()->setType(promoted_type);
         break;
@@ -179,134 +153,147 @@ class NaiveTypePropagator {
       case aten::ne:
       case aten::eq: {
         const auto promoted_type = binary_broadcast_type(
-            getInputTensorType(node, 0, true),
-            getInputTensorType(node, 1, true),
+            node->input(0)->type()->cast<TensorType>(),
+            node->input(1)->type()->cast<TensorType>(),
             at::ScalarType::Bool);
         node->output()->setType(promoted_type);
         break;
       }
       case aten::where: {
         const auto promoted_type = binary_broadcast_type(
-            getInputTensorType(node, 1, true),
-            getInputTensorType(node, 2, true));
+            node->input(1)->type()->cast<TensorType>(),
+            node->input(2)->type()->cast<TensorType>());
         node->output()->setType(promoted_type);
         break;
       }
       case aten::addcmul: {
         auto promoted_type = binary_broadcast_type(
-            getInputTensorType(node, 1, true),
-            getInputTensorType(node, 2, true));
+            node->input(1)->type()->cast<TensorType>(),
+            node->input(2)->type()->cast<TensorType>());
         promoted_type = binary_broadcast_type(
-            promoted_type, getInputTensorType(node, 0, true));
+            promoted_type, node->input(0)->type()->cast<TensorType>());
         node->output()->setType(promoted_type);
         break;
       }
-      case aten::native_dropout_backward:
       case aten::dropout: {
-        node->output()->setType(getInputTensorType(node, 0));
-        break;
-      }
-      case aten::native_dropout: {
-        auto out_type = getInputTensorType(node, 0);
-        node->output(0)->setType(out_type);
-
-        auto mask_type = TensorType::create(
-            at::ScalarType::Bool, *out_type->device(), c10::nullopt, false);
-
-        node->output(1)->setType(mask_type);
+        auto out_type = node->input(0)->type()->cast<TensorType>();
+        node->output()->setType(out_type);
         break;
       }
       case aten::instance_norm:
       case aten::batch_norm: {
-        node->output()->setType(getInputTensorType(node, 0));
+        auto out_type = node->input(0)->type()->cast<TensorType>();
+        node->output()->setType(out_type);
         break;
       }
       case aten::_batch_norm_impl_index_backward: {
+        auto grad_input_type = node->input(1)->type()->cast<TensorType>();
+        TORCH_CHECK(
+            hasTypeAndDevice(grad_input_type),
+            "Type and device propagation has failed, or was not provided enough information.");
+        node->output(0)->setType(grad_input_type);
+
+        // TODO: double check with type promotion
+        auto mean_rstd_type = TensorType::create(
+            *grad_input_type->scalarType(),
+            *grad_input_type->device(),
+            c10::nullopt,
+            c10::nullopt);
+
+        node->output(1)->setType(mean_rstd_type);
+        node->output(2)->setType(mean_rstd_type);
+
+        break;
+      }
+      case aten::_batch_norm_impl_index: {
+        auto out_type = node->input(0)->type()->cast<TensorType>();
+        TORCH_CHECK(
+            hasTypeAndDevice(out_type),
+            "Type and device propagation has failed, or was not provided enough information.");
+        node->output(0)->setType(out_type);
+
+        auto mean_rstd_type = TensorType::create(
+            *out_type->scalarType(),
+            *out_type->device(),
+            c10::nullopt,
+            c10::nullopt);
+
+        node->output(1)->setType(mean_rstd_type);
+        node->output(2)->setType(mean_rstd_type);
+        // TODO: not that it matters, but mark the right type here;
+        // node->output(3)->setType(out_type->withScalarType());
+        node->output(3)->setType(out_type);
+        node->output(4)->setType(IntType::get());
+
+        break;
+      }
+      case aten::native_batch_norm: {
+        auto out_type = node->input(0)->type()->cast<TensorType>();
+        TORCH_CHECK(
+            hasTypeAndDevice(out_type),
+            "Type and device propagation has failed, or was not provided enough information.");
+        node->output(0)->setType(out_type);
+
+        auto mean_rstd_type = TensorType::create(
+            *out_type->scalarType(),
+            *out_type->device(),
+            c10::nullopt,
+            c10::nullopt);
+
+        node->output(1)->setType(mean_rstd_type);
+        node->output(2)->setType(mean_rstd_type);
+
+        break;
+      }
+      case aten::native_batch_norm_backward: {
         // NOLINTNEXTLINE(cppcoreguidelines-avoid-magic-numbers)
-        auto out_mask_list = constant_as<c10::List<bool>>(node->input(10));
+        auto out_mask_list = constant_as<c10::List<bool>>(node->input(9));
         TORCH_INTERNAL_ASSERT(
-            out_mask_list.has_value(),
-            "Missing output mask for batch_norm_backward");
+            out_mask_list.has_value(), "output mask for batch_norm_backward");
         std::vector<int> output_mask;
         for (const auto value : out_mask_list->vec()) {
           output_mask.emplace_back(static_cast<int>(value));
         }
 
-        auto grad_input_type = getInputTensorType(node, 1);
         if (output_mask[0]) {
-          node->output(0)->setType(grad_input_type);
+          auto in_type = node->input(1)->type()->cast<TensorType>();
+          node->output(0)->setType(in_type);
         }
 
         if (output_mask[1]) {
-          if (auto weight_type = getInputTensorType(node, 3, true)) {
-            auto acc_weight_type =
-                weight_type->withScalarType(toAccumulateType(weight_type));
-            node->output(1)->setType(acc_weight_type);
-          }
+          auto weight_type = node->input(2)->type()->cast<TensorType>();
+          node->output(1)->setType(weight_type);
         }
 
-        // TODO: Use shape information from weight tensor
-        // OR get dtype information for bias tensor
         if (output_mask[2]) {
+          auto weight_type = node->input(2)->type()->cast<TensorType>();
           auto bias_type = TensorType::create(
-              toAccumulateType(grad_input_type),
-              *grad_input_type->device(),
-              c10::nullopt,
-              c10::nullopt);
+              *weight_type->scalarType(),
+              *weight_type->device(),
+              *weight_type->dim(),
+              output_mask[2]);
           node->output(2)->setType(bias_type);
         }
         break;
       }
-      case aten::_batch_norm_impl_index: {
-        auto out_type = getInputTensorType(node, 0);
-        node->output(0)->setType(out_type);
-
-        auto mean_invstd_type = TensorType::create(
-            toAccumulateType(out_type),
-            *out_type->device(),
-            c10::nullopt,
-            c10::nullopt);
-        node->output(1)->setType(mean_invstd_type);
-        node->output(2)->setType(mean_invstd_type);
-
-        // TODO: not that it matters, but mark the right type here;
-        auto reserve_type = TensorType::create(
-            *out_type->scalarType(),
-            *out_type->device(),
-            c10::nullopt,
-            c10::nullopt);
-        node->output(3)->setType(reserve_type);
-        node->output(4)->setType(IntType::get());
-        break;
-      }
-      case aten::native_batch_norm: {
-        auto out_type = getInputTensorType(node, 0);
-        node->output(0)->setType(out_type);
-
-        auto mean_invstd_type = TensorType::create(
-            toAccumulateType(out_type),
-            *out_type->device(),
-            c10::nullopt,
-            c10::nullopt);
-        node->output(1)->setType(mean_invstd_type);
-        node->output(2)->setType(mean_invstd_type);
-        break;
-      }
       case aten::layer_norm: {
-        node->output(0)->setType(getInputTensorType(node, 0));
+        auto out_type = node->input(0)->type()->cast<TensorType>();
+        node->output()->setType(out_type);
         break;
       }
       case aten::native_layer_norm: {
-        auto out_type = getInputTensorType(node, 0);
+        auto out_type = node->input(0)->type()->cast<TensorType>();
+        TORCH_CHECK(
+            hasTypeAndDevice(out_type),
+            "Type and device propagation has failed, or was not provided enough information.");
         node->output(0)->setType(out_type);
 
-        auto mean_invstd_type = TensorType::create(
-            *out_type->scalarType(),
-            *out_type->device(),
-            c10::nullopt,
-            c10::nullopt);
-        node->output(1)->setType(mean_invstd_type);
-        node->output(2)->setType(mean_invstd_type);
+        auto mean_rstd_type = TensorType::create(
+            *out_type->scalarType(), *out_type->device(), c10::nullopt, false);
+
+        node->output(1)->setType(mean_rstd_type);
+        node->output(2)->setType(mean_rstd_type);
+
         break;
       }
       case aten::native_layer_norm_backward: {
@@ -320,26 +307,31 @@ class NaiveTypePropagator {
         }
 
         if (output_mask[0]) {
-          node->output(0)->setType(getInputTensorType(node, 0));
+          auto out_type = node->input(0)->type()->cast<TensorType>();
+          node->output(0)->setType(out_type);
         }
 
-        if (output_mask[1]) {
+        if (output_mask[1] &&
+            // NOLINTNEXTLINE(cppcoreguidelines-avoid-magic-numbers)
+            !node->input(5)->type()->isSubtypeOf(
+                static_cast<c10::TypePtr>(NoneType::get()))) {
           // NOLINTNEXTLINE(cppcoreguidelines-avoid-magic-numbers)
-          if (auto weight_type = getInputTensorType(node, 5, true)) {
-            node->output(1)->setType(weight_type);
-          }
+          auto weight_type = node->input(5)->type()->cast<TensorType>();
+          node->output(1)->setType(weight_type);
         }
 
-        if (output_mask[2]) {
+        if (output_mask[2] &&
+            // NOLINTNEXTLINE(cppcoreguidelines-avoid-magic-numbers)
+            !node->input(6)->type()->isSubtypeOf(
+                static_cast<c10::TypePtr>(NoneType::get()))) {
           // NOLINTNEXTLINE(cppcoreguidelines-avoid-magic-numbers)
-          if (auto bias_type = getInputTensorType(node, 6, true)) {
-            node->output(2)->setType(bias_type);
-          }
+          auto bias_type = node->input(6)->type()->cast<TensorType>();
+          node->output(2)->setType(bias_type);
         }
         break;
       }
       case aten::softmax: {
-        auto out_type = getInputTensorType(node, 0);
+        auto out_type = node->input(0)->type()->cast<TensorType>();
 
         // accept dtype input to `aten::softmax` node
         if (!node->input(2)->type()->isSubtypeOf(
@@ -352,25 +344,19 @@ class NaiveTypePropagator {
         break;
       }
       case aten::_softmax_backward_data: {
-        auto out_type = getInputTensorType(node, 0);
-        if (auto opt_ivalue = toIValue(node->input(3))) {
-          out_type = out_type->withScalarType(opt_ivalue->toScalarType());
-        }
+        auto out_type = node->input(0)->type()->cast<TensorType>();
         node->output()->setType(out_type);
         break;
       }
-      case aten::amax:
       case aten::mean:
       case aten::sum: {
-        auto out_type = getInputTensorType(node, 0);
+        auto out_type = node->input(0)->type()->cast<TensorType>();
 
-        // accept dtype input to `aten::sum` && `aten::mean`  node
-        if (node->kind() == aten::mean || node->kind() == aten::sum) {
-          if (!node->input(3)->type()->isSubtypeOf(
-                  static_cast<c10::TypePtr>(NoneType::get()))) {
-            if (auto opt_ivalue = toIValue(node->input(3))) {
-              out_type = out_type->withScalarType(opt_ivalue->toScalarType());
-            }
+        // accept dtype input to `aten::sum` node
+        if (!node->input(3)->type()->isSubtypeOf(
+                static_cast<c10::TypePtr>(NoneType::get()))) {
+          if (auto opt_ivalue = toIValue(node->input(3))) {
+            out_type = out_type->withScalarType(opt_ivalue->toScalarType());
           }
         }
         const auto dims = constant_as<c10::List<int64_t>>(node->input(1));
@@ -389,13 +375,17 @@ class NaiveTypePropagator {
         break;
       }
       case aten::type_as: {
-        const auto type0 = getInputTensorType(node, 0);
-        const auto type1 = getInputTensorType(node, 1);
+        const auto type0 = node->input(0)->type()->cast<TensorType>();
+        const auto type1 = node->input(1)->type()->cast<TensorType>();
+        TORCH_CHECK(
+            type0 != nullptr && type1 != nullptr &&
+                type1->scalarType().has_value(),
+            "input to type_as needs to be a tensor");
         node->output()->setType(type0->withScalarType(type1->scalarType()));
         break;
       }
       case aten::to: {
-        const auto type0 = getInputTensorType(node, 0);
+        const auto type0 = node->input(0)->type()->cast<TensorType>();
         const auto out_dtype = toIValue(node->input(1));
         TORCH_CHECK(out_dtype, "No output type specified");
         node->output()->setType(
@@ -403,52 +393,14 @@ class NaiveTypePropagator {
         break;
       }
       case prim::add_optional: {
-        const auto type0 = getInputTensorType(node, 0);
-        const auto type1 = getInputTensorType(node, 1, true);
+        const auto type0 = node->input(0)->type()->cast<TensorType>();
+        const auto type1 = node->input(1)->type()->cast<TensorType>();
         TORCH_CHECK(type0 != nullptr);
         if (type1 != nullptr) {
           node->output()->setType(type0);
         } else {
-          node->output()->setType(binary_broadcast_type(type0, type1));
-        }
-        break;
-      }
-      case aten::autocast_to_fp16: {
-        const auto in_type = getInputTensorType(node, 0);
-        if (in_type->scalarType() == at::ScalarType::Float) {
-          node->output()->setType(
-              in_type->withScalarType(at::ScalarType::Half));
-        } else {
-          node->output()->setType(in_type);
-        }
-        break;
-      }
-      case aten::autocast_to_bf16: {
-        const auto in_type = node->input(0)->type()->cast<TensorType>();
-        const auto in_scalar_type = in_type->scalarType();
-        TORCH_CHECK(
-            hasTypeAndDevice(in_type),
-            "Type and device propagation has failed, or was not provided enough information.");
-        if (in_scalar_type == at::ScalarType::Float) {
-          node->output()->setType(
-              in_type->withScalarType(at::ScalarType::BFloat16));
-        } else {
-          node->output()->setType(in_type);
-        }
-        break;
-      }
-      case aten::autocast_to_fp32: {
-        const auto in_type = node->input(0)->type()->cast<TensorType>();
-        const auto in_scalar_type = in_type->scalarType();
-        TORCH_CHECK(
-            hasTypeAndDevice(in_type),
-            "Type and device propagation has failed, or was not provided enough information.");
-        if (in_scalar_type == at::ScalarType::Half ||
-            in_scalar_type == at::ScalarType::BFloat16) {
-          node->output()->setType(
-              in_type->withScalarType(at::ScalarType::Float));
-        } else {
-          node->output()->setType(in_type);
+          const auto promoted_type = binary_broadcast_type(type0, type1);
+          node->output()->setType(promoted_type);
         }
         break;
       }
