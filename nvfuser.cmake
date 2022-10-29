@@ -6,40 +6,40 @@ endif()
 
 # The list of NVFUSER runtime files
 list(APPEND NVFUSER_RUNTIME_FILES
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/array.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/block_reduction.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/block_sync_atomic.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/block_sync_default.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/broadcast.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/fp16_support.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/fused_reduction.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/fused_welford_helper.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/fused_welford_impl.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/bf16_support.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/grid_broadcast.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/grid_reduction.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/grid_sync.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/helpers.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/index_utils.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/random_numbers.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/tensor.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/tuple.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/type_traits.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/welford.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/warp.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/tensorcore.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/memory.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/swizzle.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/array.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/block_reduction.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/block_sync_atomic.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/block_sync_default.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/broadcast.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/fp16_support.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/fused_reduction.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/fused_welford_helper.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/fused_welford_impl.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/bf16_support.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/grid_broadcast.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/grid_reduction.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/grid_sync.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/helpers.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/index_utils.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/random_numbers.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/tensor.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/tuple.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/type_traits.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/welford.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/warp.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/tensorcore.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/memory.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/swizzle.cu
   ${TORCH_ROOT}/aten/src/ATen/cuda/detail/PhiloxCudaStateRaw.cuh
   ${TORCH_ROOT}/aten/src/ATen/cuda/detail/UnpackRaw.cuh
 )
 
 if(USE_ROCM)
 list(APPEND NVFUSER_RUNTIME_FILES
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/array_rocm.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/bf16_support_rocm.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/block_sync_default_rocm.cu
-  ${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/runtime/warp_rocm.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/array_rocm.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/bf16_support_rocm.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/block_sync_default_rocm.cu
+  ${TORCH_ROOT}/third_party/nvfuser/runtime/warp_rocm.cu
 )
 endif()
 
@@ -47,7 +47,7 @@ file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/include/nvfuser_resources")
 
 # "stringify" NVFUSER runtime sources
 # (generate C++ header files embedding the original input as a string literal)
-set(NVFUSER_STRINGIFY_TOOL "${TORCH_SRC_DIR}/csrc/jit/codegen/cuda/tools/stringify_file.py")
+set(NVFUSER_STRINGIFY_TOOL "${TORCH_ROOT}/third_party/nvfuser/tools/stringify_file.py")
 foreach(src ${NVFUSER_RUNTIME_FILES})
   get_filename_component(filename ${src} NAME_WE)
   set(dst "${CMAKE_BINARY_DIR}/include/nvfuser_resources/${filename}.h")
