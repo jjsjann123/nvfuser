@@ -1,10 +1,10 @@
 #pragma once
 
-#include <torch/csrc/jit/codegen/cuda/ir_all_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/ir_base_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/parallel_type_bitmap.h>
-#include <torch/csrc/jit/codegen/cuda/type.h>
-#include <torch/csrc/jit/codegen/cuda/utils.h>
+#include <third_party/nvfuser/ir_all_nodes.h>
+#include <third_party/nvfuser/ir_base_nodes.h>
+#include <third_party/nvfuser/parallel_type_bitmap.h>
+#include <third_party/nvfuser/type.h>
+#include <third_party/nvfuser/utils.h>
 
 #include <c10/macros/Export.h>
 #include <c10/util/Optional.h>

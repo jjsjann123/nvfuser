@@ -1,15 +1,15 @@
 
-#include <torch/csrc/jit/codegen/cuda/executor.h>
+#include <third_party/nvfuser/executor.h>
 
-#include <torch/csrc/jit/codegen/cuda/codegen.h>
-#include <torch/csrc/jit/codegen/cuda/executor_kernel_arg.h>
-#include <torch/csrc/jit/codegen/cuda/executor_utils.h>
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/ir_all_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/iter_visitor.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_ir.h>
-#include <torch/csrc/jit/codegen/cuda/utils.h>
+#include <third_party/nvfuser/codegen.h>
+#include <third_party/nvfuser/executor_kernel_arg.h>
+#include <third_party/nvfuser/executor_utils.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/ir_all_nodes.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/iter_visitor.h>
+#include <third_party/nvfuser/kernel_ir.h>
+#include <third_party/nvfuser/utils.h>
 
 #include <ATen/core/LegacyTypeDispatch.h>
 #include <ATen/cuda/CUDAContext.h>

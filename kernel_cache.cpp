@@ -1,10 +1,10 @@
-#include <torch/csrc/jit/codegen/cuda/kernel_cache.h>
+#include <third_party/nvfuser/kernel_cache.h>
 
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/parser.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/debug_utils.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/registry.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/parser.h>
+#include <third_party/nvfuser/scheduler/debug_utils.h>
+#include <third_party/nvfuser/scheduler/registry.h>
 #include <torch/csrc/jit/jit_log.h>
 #include <torch/csrc/jit/runtime/graph_executor.h>
 

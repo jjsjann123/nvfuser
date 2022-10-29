@@ -1,12 +1,12 @@
-#include <torch/csrc/jit/codegen/cuda/codegen.h>
-#include <torch/csrc/jit/codegen/cuda/expr_evaluator.h>
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_expr_evaluator.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_ir.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_ir_dispatch.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/mma_utils.h>
-#include <torch/csrc/jit/codegen/cuda/type.h>
-#include <torch/csrc/jit/codegen/cuda/utils.h>
+#include <third_party/nvfuser/codegen.h>
+#include <third_party/nvfuser/expr_evaluator.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/kernel_expr_evaluator.h>
+#include <third_party/nvfuser/kernel_ir.h>
+#include <third_party/nvfuser/kernel_ir_dispatch.h>
+#include <third_party/nvfuser/scheduler/mma_utils.h>
+#include <third_party/nvfuser/type.h>
+#include <third_party/nvfuser/utils.h>
 
 #include <array>
 #include <cmath>

@@ -2,11 +2,11 @@
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
 
-#include <torch/csrc/jit/codegen/cuda/fusion.h>
-#include <torch/csrc/jit/codegen/cuda/ops/all_ops.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/utils.h>
-#include <torch/csrc/jit/codegen/cuda/test/test_gpu_validator.h>
-#include <torch/csrc/jit/codegen/cuda/test/test_utils.h>
+#include <third_party/nvfuser/fusion.h>
+#include <third_party/nvfuser/ops/all_ops.h>
+#include <third_party/nvfuser/scheduler/utils.h>
+#include <third_party/nvfuser/test/test_gpu_validator.h>
+#include <third_party/nvfuser/test/test_utils.h>
 
 // Tests go in torch::jit
 namespace torch {

@@ -1,8 +1,8 @@
 #pragma once
 
-#include <torch/csrc/jit/codegen/cuda/iter_visitor.h>
-#include <torch/csrc/jit/codegen/cuda/reference_tensor.h>
-#include <torch/csrc/jit/codegen/cuda/root_domain_map.h>
+#include <third_party/nvfuser/iter_visitor.h>
+#include <third_party/nvfuser/reference_tensor.h>
+#include <third_party/nvfuser/root_domain_map.h>
 
 #include <unordered_map>
 #include <unordered_set>

@@ -1,16 +1,16 @@
-#include <torch/csrc/jit/codegen/cuda/lower_validation.h>
+#include <third_party/nvfuser/lower_validation.h>
 
-#include <torch/csrc/jit/codegen/cuda/contiguity.h>
-#include <torch/csrc/jit/codegen/cuda/expr_evaluator.h>
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/ir_iostream.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/iter_visitor.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
-#include <torch/csrc/jit/codegen/cuda/lower_utils.h>
-#include <torch/csrc/jit/codegen/cuda/transform_iter.h>
-#include <torch/csrc/jit/codegen/cuda/transform_replay.h>
-#include <torch/csrc/jit/codegen/cuda/type.h>
+#include <third_party/nvfuser/contiguity.h>
+#include <third_party/nvfuser/expr_evaluator.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/ir_iostream.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/iter_visitor.h>
+#include <third_party/nvfuser/lower2device.h>
+#include <third_party/nvfuser/lower_utils.h>
+#include <third_party/nvfuser/transform_iter.h>
+#include <third_party/nvfuser/transform_replay.h>
+#include <third_party/nvfuser/type.h>
 
 #include <ATen/cuda/CUDAContext.h>
 #include <limits>

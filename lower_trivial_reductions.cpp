@@ -1,12 +1,12 @@
-#include <torch/csrc/jit/codegen/cuda/dispatch.h>
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/ir_iostream.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/iter_visitor.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
-#include <torch/csrc/jit/codegen/cuda/lower_trivial_reductions.h>
-#include <torch/csrc/jit/codegen/cuda/lower_utils.h>
-#include <torch/csrc/jit/codegen/cuda/root_domain_map.h>
+#include <third_party/nvfuser/dispatch.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/ir_iostream.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/iter_visitor.h>
+#include <third_party/nvfuser/lower2device.h>
+#include <third_party/nvfuser/lower_trivial_reductions.h>
+#include <third_party/nvfuser/lower_utils.h>
+#include <third_party/nvfuser/root_domain_map.h>
 
 #include <unordered_set>
 

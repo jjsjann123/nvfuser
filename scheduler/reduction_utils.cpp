@@ -1,13 +1,13 @@
-#include <torch/csrc/jit/codegen/cuda/scheduler/reduction_utils.h>
+#include <third_party/nvfuser/scheduler/reduction_utils.h>
 
-#include <torch/csrc/jit/codegen/cuda/expr_evaluator.h>
-#include <torch/csrc/jit/codegen/cuda/inline_propagator.h>
-#include <torch/csrc/jit/codegen/cuda/ir_cloner.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/maxinfo_propagator.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/registry.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/utils.h>
-#include <torch/csrc/jit/codegen/cuda/transform_replay.h>
+#include <third_party/nvfuser/expr_evaluator.h>
+#include <third_party/nvfuser/inline_propagator.h>
+#include <third_party/nvfuser/ir_cloner.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/maxinfo_propagator.h>
+#include <third_party/nvfuser/scheduler/registry.h>
+#include <third_party/nvfuser/scheduler/utils.h>
+#include <third_party/nvfuser/transform_replay.h>
 
 namespace torch {
 namespace jit {

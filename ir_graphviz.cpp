@@ -1,9 +1,9 @@
-#include <torch/csrc/jit/codegen/cuda/ir_graphviz.h>
+#include <third_party/nvfuser/ir_graphviz.h>
 
-#include <torch/csrc/jit/codegen/cuda/fusion.h>
-#include <torch/csrc/jit/codegen/cuda/ir_all_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/ir_builder.h>
-#include <torch/csrc/jit/codegen/cuda/type.h>
+#include <third_party/nvfuser/fusion.h>
+#include <third_party/nvfuser/ir_all_nodes.h>
+#include <third_party/nvfuser/ir_builder.h>
+#include <third_party/nvfuser/type.h>
 
 #include <fstream>
 

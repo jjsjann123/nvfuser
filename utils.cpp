@@ -1,5 +1,5 @@
 
-#include <torch/csrc/jit/codegen/cuda/utils.h>
+#include <third_party/nvfuser/utils.h>
 
 #include <c10/util/string_view.h>
 

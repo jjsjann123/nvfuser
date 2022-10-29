@@ -1,7 +1,7 @@
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/lower2device.h>
 
-#include <torch/csrc/jit/codegen/cuda/contiguity.h>
+#include <third_party/nvfuser/contiguity.h>
 
 namespace torch {
 namespace jit {

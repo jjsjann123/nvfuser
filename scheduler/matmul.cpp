@@ -1,6 +1,6 @@
-#include <torch/csrc/jit/codegen/cuda/scheduler/matmul.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/mma_utils.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/utils.h>
+#include <third_party/nvfuser/scheduler/matmul.h>
+#include <third_party/nvfuser/scheduler/mma_utils.h>
+#include <third_party/nvfuser/scheduler/utils.h>
 
 namespace torch {
 namespace jit {

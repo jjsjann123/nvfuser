@@ -1,10 +1,10 @@
-#include <torch/csrc/jit/codegen/cuda/compute_at_map.h>
+#include <third_party/nvfuser/compute_at_map.h>
 
-#include <torch/csrc/jit/codegen/cuda/disjoint_set.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
-#include <torch/csrc/jit/codegen/cuda/root_domain_map.h>
-#include <torch/csrc/jit/codegen/cuda/transform_iter.h>
+#include <third_party/nvfuser/disjoint_set.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/lower2device.h>
+#include <third_party/nvfuser/root_domain_map.h>
+#include <third_party/nvfuser/transform_iter.h>
 
 namespace torch {
 namespace jit {

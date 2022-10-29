@@ -1,11 +1,11 @@
 #pragma once
 
-#include <torch/csrc/jit/codegen/cuda/evaluator_common.h>
-#include <torch/csrc/jit/codegen/cuda/executor.h>
-#include <torch/csrc/jit/codegen/cuda/fusion.h>
-#include <torch/csrc/jit/codegen/cuda/fusion_segmenter.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/all_schedulers.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/registry.h>
+#include <third_party/nvfuser/evaluator_common.h>
+#include <third_party/nvfuser/executor.h>
+#include <third_party/nvfuser/fusion.h>
+#include <third_party/nvfuser/fusion_segmenter.h>
+#include <third_party/nvfuser/scheduler/all_schedulers.h>
+#include <third_party/nvfuser/scheduler/registry.h>
 
 #include <c10/macros/Export.h>
 #include <c10/util/ArrayRef.h>

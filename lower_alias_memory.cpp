@@ -1,12 +1,12 @@
-#include <torch/csrc/jit/codegen/cuda/lower_alias_memory.h>
+#include <third_party/nvfuser/lower_alias_memory.h>
 
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/ir_iostream.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_expr_evaluator.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_ir.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
-#include <torch/csrc/jit/codegen/cuda/lower_utils.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/ir_iostream.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/kernel_expr_evaluator.h>
+#include <third_party/nvfuser/kernel_ir.h>
+#include <third_party/nvfuser/lower2device.h>
+#include <third_party/nvfuser/lower_utils.h>
 
 #include <sstream>
 #include <unordered_map>

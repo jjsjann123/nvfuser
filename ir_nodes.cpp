@@ -1,16 +1,16 @@
-#include <torch/csrc/jit/codegen/cuda/arith.h>
-#include <torch/csrc/jit/codegen/cuda/disjoint_set.h>
-#include <torch/csrc/jit/codegen/cuda/ir_cloner.h>
-#include <torch/csrc/jit/codegen/cuda/ir_interface_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/ir_iostream.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/kernel.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_ir.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
-#include <torch/csrc/jit/codegen/cuda/root_domain_map.h>
-#include <torch/csrc/jit/codegen/cuda/transform_iter.h>
-#include <torch/csrc/jit/codegen/cuda/transform_rfactor.h>
-#include <torch/csrc/jit/codegen/cuda/transform_view.h>
+#include <third_party/nvfuser/arith.h>
+#include <third_party/nvfuser/disjoint_set.h>
+#include <third_party/nvfuser/ir_cloner.h>
+#include <third_party/nvfuser/ir_interface_nodes.h>
+#include <third_party/nvfuser/ir_iostream.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/kernel.h>
+#include <third_party/nvfuser/kernel_ir.h>
+#include <third_party/nvfuser/lower2device.h>
+#include <third_party/nvfuser/root_domain_map.h>
+#include <third_party/nvfuser/transform_iter.h>
+#include <third_party/nvfuser/transform_rfactor.h>
+#include <third_party/nvfuser/transform_view.h>
 
 #include <c10/util/irange.h>
 

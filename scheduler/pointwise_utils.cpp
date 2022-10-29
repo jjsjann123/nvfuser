@@ -1,4 +1,4 @@
-#include <torch/csrc/jit/codegen/cuda/scheduler/pointwise_utils.h>
+#include <third_party/nvfuser/scheduler/pointwise_utils.h>
 
 namespace torch {
 namespace jit {

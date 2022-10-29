@@ -2,8 +2,8 @@
 
 #include <c10/macros/Export.h>
 
-#include <torch/csrc/jit/codegen/cuda/ir_all_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/iter_visitor.h>
+#include <third_party/nvfuser/ir_all_nodes.h>
+#include <third_party/nvfuser/iter_visitor.h>
 
 namespace torch {
 namespace jit {

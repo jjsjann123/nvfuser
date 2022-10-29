@@ -1,17 +1,17 @@
-#include <torch/csrc/jit/codegen/cuda/scheduler/pointwise.h>
+#include <third_party/nvfuser/scheduler/pointwise.h>
 
-#include <torch/csrc/jit/codegen/cuda/executor_utils.h>
-#include <torch/csrc/jit/codegen/cuda/inline_propagator.h>
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/ir_iostream.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/lower_utils.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/pointwise_utils.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/registry.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/utils.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/vectorize_helper.h>
-#include <torch/csrc/jit/codegen/cuda/transform_replay.h>
-#include <torch/csrc/jit/codegen/cuda/utils.h>
+#include <third_party/nvfuser/executor_utils.h>
+#include <third_party/nvfuser/inline_propagator.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/ir_iostream.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/lower_utils.h>
+#include <third_party/nvfuser/scheduler/pointwise_utils.h>
+#include <third_party/nvfuser/scheduler/registry.h>
+#include <third_party/nvfuser/scheduler/utils.h>
+#include <third_party/nvfuser/scheduler/vectorize_helper.h>
+#include <third_party/nvfuser/transform_replay.h>
+#include <third_party/nvfuser/utils.h>
 
 #include <ATen/cuda/CUDAContext.h>
 

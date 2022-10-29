@@ -2,8 +2,8 @@
 
 #include <c10/macros/Export.h>
 
-#include <torch/csrc/jit/codegen/cuda/ir_all_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_ir.h>
+#include <third_party/nvfuser/ir_all_nodes.h>
+#include <third_party/nvfuser/kernel_ir.h>
 
 #include <vector>
 

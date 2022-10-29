@@ -5,8 +5,8 @@
 #include <c10/util/Exception.h>
 #include <c10/util/Optional.h>
 
-#include <torch/csrc/jit/codegen/cuda/type.h>
-#include <torch/csrc/jit/codegen/cuda/utils.h>
+#include <third_party/nvfuser/type.h>
+#include <third_party/nvfuser/utils.h>
 
 #include <cstdint>
 #include <iostream>

@@ -1,15 +1,15 @@
-#include <torch/csrc/jit/codegen/cuda/lower_utils.h>
+#include <third_party/nvfuser/lower_utils.h>
 
 #include <ATen/cuda/CUDAContext.h>
 #include <c10/util/irange.h>
-#include <torch/csrc/jit/codegen/cuda/arith.h>
-#include <torch/csrc/jit/codegen/cuda/ir_iostream.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/iter_visitor.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_ir_dispatch.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
-#include <torch/csrc/jit/codegen/cuda/lower_thread_predicate.h>
-#include <torch/csrc/jit/codegen/cuda/root_domain_map.h>
+#include <third_party/nvfuser/arith.h>
+#include <third_party/nvfuser/ir_iostream.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/iter_visitor.h>
+#include <third_party/nvfuser/kernel_ir_dispatch.h>
+#include <third_party/nvfuser/lower2device.h>
+#include <third_party/nvfuser/lower_thread_predicate.h>
+#include <third_party/nvfuser/root_domain_map.h>
 
 #include <algorithm>
 

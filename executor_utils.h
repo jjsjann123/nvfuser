@@ -9,13 +9,13 @@
 
 #include <torch/csrc/jit/ir/ir.h>
 
-#include <torch/csrc/jit/codegen/cuda/executor_kernel_arg.h>
-#include <torch/csrc/jit/codegen/cuda/expr_evaluator.h>
-#include <torch/csrc/jit/codegen/cuda/fusion.h>
-#include <torch/csrc/jit/codegen/cuda/ir_all_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/kernel.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_expr_evaluator.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
+#include <third_party/nvfuser/executor_kernel_arg.h>
+#include <third_party/nvfuser/expr_evaluator.h>
+#include <third_party/nvfuser/fusion.h>
+#include <third_party/nvfuser/ir_all_nodes.h>
+#include <third_party/nvfuser/kernel.h>
+#include <third_party/nvfuser/kernel_expr_evaluator.h>
+#include <third_party/nvfuser/lower2device.h>
 
 #include <string>
 #include <vector>

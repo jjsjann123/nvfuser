@@ -1,21 +1,21 @@
 #include <c10/util/irange.h>
-#include <torch/csrc/jit/codegen/cuda/arith.h>
-#include <torch/csrc/jit/codegen/cuda/compute_at.h>
-#include <torch/csrc/jit/codegen/cuda/expr_evaluator.h>
-#include <torch/csrc/jit/codegen/cuda/fusion.h>
-#include <torch/csrc/jit/codegen/cuda/ir_all_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/ir_builder.h>
-#include <torch/csrc/jit/codegen/cuda/ir_cloner.h>
-#include <torch/csrc/jit/codegen/cuda/ir_interface_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/ir_iostream.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
-#include <torch/csrc/jit/codegen/cuda/lower_double_buffer.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/mma_utils.h>
+#include <third_party/nvfuser/arith.h>
+#include <third_party/nvfuser/compute_at.h>
+#include <third_party/nvfuser/expr_evaluator.h>
+#include <third_party/nvfuser/fusion.h>
+#include <third_party/nvfuser/ir_all_nodes.h>
+#include <third_party/nvfuser/ir_builder.h>
+#include <third_party/nvfuser/ir_cloner.h>
+#include <third_party/nvfuser/ir_interface_nodes.h>
+#include <third_party/nvfuser/ir_iostream.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/lower2device.h>
+#include <third_party/nvfuser/lower_double_buffer.h>
+#include <third_party/nvfuser/scheduler/mma_utils.h>
 
 // Cleanup
-#include <torch/csrc/jit/codegen/cuda/transform_iter.h>
-#include <torch/csrc/jit/codegen/cuda/transform_replay.h>
+#include <third_party/nvfuser/transform_iter.h>
+#include <third_party/nvfuser/transform_replay.h>
 
 namespace torch {
 namespace jit {

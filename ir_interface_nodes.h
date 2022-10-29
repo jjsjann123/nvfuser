@@ -2,10 +2,10 @@
 
 #include <c10/macros/Export.h>
 
-#include <torch/csrc/jit/codegen/cuda/fusion.h>
-#include <torch/csrc/jit/codegen/cuda/ir_base_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/ir_internal_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/mma_type.h>
+#include <third_party/nvfuser/fusion.h>
+#include <third_party/nvfuser/ir_base_nodes.h>
+#include <third_party/nvfuser/ir_internal_nodes.h>
+#include <third_party/nvfuser/mma_type.h>
 
 #include <torch/csrc/jit/ir/ir.h>
 

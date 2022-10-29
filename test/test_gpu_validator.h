@@ -1,8 +1,8 @@
-#include <torch/csrc/jit/codegen/cuda/executor_utils.h>
-#include <torch/csrc/jit/codegen/cuda/expr_evaluator.h>
-#include <torch/csrc/jit/codegen/cuda/fusion.h>
-#include <torch/csrc/jit/codegen/cuda/ir_iostream.h>
-#include <torch/csrc/jit/codegen/cuda/lower_utils.h>
+#include <third_party/nvfuser/executor_utils.h>
+#include <third_party/nvfuser/expr_evaluator.h>
+#include <third_party/nvfuser/fusion.h>
+#include <third_party/nvfuser/ir_iostream.h>
+#include <third_party/nvfuser/lower_utils.h>
 
 #include <ATen/cuda/CUDAContext.h>
 #include <c10/cuda/CUDACachingAllocator.h>

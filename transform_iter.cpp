@@ -1,7 +1,7 @@
-#include <torch/csrc/jit/codegen/cuda/transform_iter.h>
+#include <third_party/nvfuser/transform_iter.h>
 
 #include <c10/util/irange.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
+#include <third_party/nvfuser/ir_utils.h>
 
 namespace torch {
 namespace jit {

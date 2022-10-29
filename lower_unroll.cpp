@@ -1,15 +1,15 @@
-#include <torch/csrc/jit/codegen/cuda/lower_unroll.h>
+#include <third_party/nvfuser/lower_unroll.h>
 
-#include <torch/csrc/jit/codegen/cuda/arith.h>
-#include <torch/csrc/jit/codegen/cuda/index_compute.h>
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/ir_iostream.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_expr_evaluator.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
-#include <torch/csrc/jit/codegen/cuda/lower_misaligned_vectorization.h>
-#include <torch/csrc/jit/codegen/cuda/lower_utils.h>
-#include <torch/csrc/jit/codegen/cuda/predicate_compute.h>
+#include <third_party/nvfuser/arith.h>
+#include <third_party/nvfuser/index_compute.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/ir_iostream.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/kernel_expr_evaluator.h>
+#include <third_party/nvfuser/lower2device.h>
+#include <third_party/nvfuser/lower_misaligned_vectorization.h>
+#include <third_party/nvfuser/lower_utils.h>
+#include <third_party/nvfuser/predicate_compute.h>
 
 namespace torch {
 namespace jit {

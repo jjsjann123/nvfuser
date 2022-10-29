@@ -1,16 +1,16 @@
-#include <torch/csrc/jit/codegen/cuda/arith.h>
-#include <torch/csrc/jit/codegen/cuda/codegen.h>
-#include <torch/csrc/jit/codegen/cuda/disjoint_set.h>
-#include <torch/csrc/jit/codegen/cuda/fusion.h>
-#include <torch/csrc/jit/codegen/cuda/fusion_segmenter.h>
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/ir_all_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/ir_cloner.h>
-#include <torch/csrc/jit/codegen/cuda/ir_printer.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/iter_visitor.h>
-#include <torch/csrc/jit/codegen/cuda/kernel.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
+#include <third_party/nvfuser/arith.h>
+#include <third_party/nvfuser/codegen.h>
+#include <third_party/nvfuser/disjoint_set.h>
+#include <third_party/nvfuser/fusion.h>
+#include <third_party/nvfuser/fusion_segmenter.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/ir_all_nodes.h>
+#include <third_party/nvfuser/ir_cloner.h>
+#include <third_party/nvfuser/ir_printer.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/iter_visitor.h>
+#include <third_party/nvfuser/kernel.h>
+#include <third_party/nvfuser/lower2device.h>
 
 namespace torch {
 namespace jit {

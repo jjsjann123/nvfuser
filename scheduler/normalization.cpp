@@ -1,15 +1,15 @@
-#include <torch/csrc/jit/codegen/cuda/scheduler/reduction.h>
+#include <third_party/nvfuser/scheduler/reduction.h>
 
-#include <torch/csrc/jit/codegen/cuda/executor_utils.h>
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/ir_all_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/ir_iostream.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/reduction_utils.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/registry.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/utils.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/vectorize_helper.h>
-#include <torch/csrc/jit/codegen/cuda/transform_replay.h>
+#include <third_party/nvfuser/executor_utils.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/ir_all_nodes.h>
+#include <third_party/nvfuser/ir_iostream.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/scheduler/reduction_utils.h>
+#include <third_party/nvfuser/scheduler/registry.h>
+#include <third_party/nvfuser/scheduler/utils.h>
+#include <third_party/nvfuser/scheduler/vectorize_helper.h>
+#include <third_party/nvfuser/transform_replay.h>
 
 #include <ATen/cuda/CUDAContext.h>
 

@@ -1,5 +1,5 @@
 #pragma once
-#include <torch/csrc/jit/codegen/cuda/arith.h>
-#include <torch/csrc/jit/codegen/cuda/ops/alias.h>
-#include <torch/csrc/jit/codegen/cuda/ops/composite.h>
-#include <torch/csrc/jit/codegen/cuda/ops/normalization.h>
+#include <third_party/nvfuser/arith.h>
+#include <third_party/nvfuser/ops/alias.h>
+#include <third_party/nvfuser/ops/composite.h>
+#include <third_party/nvfuser/ops/normalization.h>

@@ -1,9 +1,9 @@
-#include <torch/csrc/jit/codegen/cuda/iter_visitor.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_ir_dispatch.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
-#include <torch/csrc/jit/codegen/cuda/lower_magic_zero.h>
+#include <third_party/nvfuser/iter_visitor.h>
+#include <third_party/nvfuser/kernel_ir_dispatch.h>
+#include <third_party/nvfuser/lower2device.h>
+#include <third_party/nvfuser/lower_magic_zero.h>
 
-#include <torch/csrc/jit/codegen/cuda/lower_instrument.h>
+#include <third_party/nvfuser/lower_instrument.h>
 
 namespace torch {
 namespace jit {

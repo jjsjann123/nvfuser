@@ -1,4 +1,4 @@
-#include <torch/csrc/jit/codegen/cuda/executor_launch_params.h>
+#include <third_party/nvfuser/executor_launch_params.h>
 
 #include <ATen/cuda/CUDAContext.h>
 

@@ -2,12 +2,12 @@
 
 #include <c10/util/Exception.h>
 #include <c10/util/irange.h>
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/interface.h>
-#include <torch/csrc/jit/codegen/cuda/parser.h>
-#include <torch/csrc/jit/codegen/cuda/partition.h>
-#include <torch/csrc/jit/codegen/cuda/transform_view.h>
-#include <torch/csrc/jit/codegen/cuda/utils.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/interface.h>
+#include <third_party/nvfuser/parser.h>
+#include <third_party/nvfuser/partition.h>
+#include <third_party/nvfuser/transform_view.h>
+#include <third_party/nvfuser/utils.h>
 #include <torch/csrc/jit/frontend/ir_emitter.h>
 #include <torch/csrc/jit/ir/alias_analysis.h>
 #include <torch/csrc/jit/jit_log.h>

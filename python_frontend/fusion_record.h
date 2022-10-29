@@ -1,10 +1,10 @@
 #pragma once
 #include <c10/util/complex.h>
-#include <torch/csrc/jit/codegen/cuda/arith.h>
-#include <torch/csrc/jit/codegen/cuda/ops/alias.h>
-#include <torch/csrc/jit/codegen/cuda/ops/normalization.h>
-#include <torch/csrc/jit/codegen/cuda/python_frontend/fusion_definition.h>
-#include <torch/csrc/jit/codegen/cuda/utils.h>
+#include <third_party/nvfuser/arith.h>
+#include <third_party/nvfuser/ops/alias.h>
+#include <third_party/nvfuser/ops/normalization.h>
+#include <third_party/nvfuser/python_frontend/fusion_definition.h>
+#include <third_party/nvfuser/utils.h>
 
 #include <algorithm>
 

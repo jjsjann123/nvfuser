@@ -3,11 +3,11 @@
 
 #include <c10/macros/Export.h>
 
-#include <torch/csrc/jit/codegen/cuda/compute_at_map.h>
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/ir_all_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_ir.h>
-#include <torch/csrc/jit/codegen/cuda/lower_thread_predicate.h>
+#include <third_party/nvfuser/compute_at_map.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/ir_all_nodes.h>
+#include <third_party/nvfuser/kernel_ir.h>
+#include <third_party/nvfuser/lower_thread_predicate.h>
 
 namespace torch {
 namespace jit {

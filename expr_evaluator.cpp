@@ -1,10 +1,10 @@
 
-#include <torch/csrc/jit/codegen/cuda/evaluator_common.h>
-#include <torch/csrc/jit/codegen/cuda/expr_evaluator.h>
-#include <torch/csrc/jit/codegen/cuda/fusion.h>
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/ir_all_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/ir_iostream.h>
+#include <third_party/nvfuser/evaluator_common.h>
+#include <third_party/nvfuser/expr_evaluator.h>
+#include <third_party/nvfuser/fusion.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/ir_all_nodes.h>
+#include <third_party/nvfuser/ir_iostream.h>
 
 #include <iostream>
 

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <c10/macros/Export.h>
-#include <torch/csrc/jit/codegen/cuda/transform_view.h>
+#include <third_party/nvfuser/transform_view.h>
 #include <torch/csrc/jit/ir/ir.h>
 #include <torch/csrc/jit/passes/pass_manager.h>
 #include <torch/csrc/jit/runtime/profiling_record.h>

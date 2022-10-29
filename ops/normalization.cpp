@@ -1,6 +1,6 @@
-#include <torch/csrc/jit/codegen/cuda/arith.h>
-#include <torch/csrc/jit/codegen/cuda/ir_builder.h>
-#include <torch/csrc/jit/codegen/cuda/ops/normalization.h>
+#include <third_party/nvfuser/arith.h>
+#include <third_party/nvfuser/ir_builder.h>
+#include <third_party/nvfuser/ops/normalization.h>
 
 namespace torch {
 namespace jit {

@@ -1,8 +1,8 @@
 #pragma once
 
-#include <torch/csrc/jit/codegen/cuda/inline_propagator.h>
-#include <torch/csrc/jit/codegen/cuda/root_domain_map.h>
-#include <torch/csrc/jit/codegen/cuda/transform_replay.h>
+#include <third_party/nvfuser/inline_propagator.h>
+#include <third_party/nvfuser/root_domain_map.h>
+#include <third_party/nvfuser/transform_replay.h>
 
 #include <c10/macros/Export.h>
 #include <c10/util/Exception.h>

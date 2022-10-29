@@ -1,15 +1,15 @@
-#include <torch/csrc/jit/codegen/cuda/arith.h>
+#include <third_party/nvfuser/arith.h>
 
 #include <c10/util/BFloat16.h>
 #include <c10/util/Exception.h>
 #include <c10/util/Half.h>
 #include <c10/util/irange.h>
-#include <torch/csrc/jit/codegen/cuda/ir_all_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/ir_builder.h>
-#include <torch/csrc/jit/codegen/cuda/ir_iostream.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/type.h>
-#include <torch/csrc/jit/codegen/cuda/type_promotion.h>
+#include <third_party/nvfuser/ir_all_nodes.h>
+#include <third_party/nvfuser/ir_builder.h>
+#include <third_party/nvfuser/ir_iostream.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/type.h>
+#include <third_party/nvfuser/type_promotion.h>
 #include <cfloat>
 
 namespace torch {

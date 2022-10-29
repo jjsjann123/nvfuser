@@ -1,12 +1,12 @@
-#include <torch/csrc/jit/codegen/cuda/transform_rfactor.h>
+#include <third_party/nvfuser/transform_rfactor.h>
 
-#include <torch/csrc/jit/codegen/cuda/arith.h>
-#include <torch/csrc/jit/codegen/cuda/fusion.h>
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/ir_builder.h>
-#include <torch/csrc/jit/codegen/cuda/ir_iostream.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/iter_visitor.h>
+#include <third_party/nvfuser/arith.h>
+#include <third_party/nvfuser/fusion.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/ir_builder.h>
+#include <third_party/nvfuser/ir_iostream.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/iter_visitor.h>
 
 namespace torch {
 namespace jit {

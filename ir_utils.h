@@ -1,7 +1,7 @@
 #pragma once
 
-#include <torch/csrc/jit/codegen/cuda/ir_all_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/type.h>
+#include <third_party/nvfuser/ir_all_nodes.h>
+#include <third_party/nvfuser/type.h>
 
 #include <iterator>
 #include <unordered_map>

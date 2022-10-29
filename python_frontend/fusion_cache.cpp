@@ -1,5 +1,5 @@
-#include <torch/csrc/jit/codegen/cuda/python_frontend/fusion_cache.h>
-#include <torch/csrc/jit/codegen/cuda/python_frontend/fusion_record.h>
+#include <third_party/nvfuser/python_frontend/fusion_cache.h>
+#include <third_party/nvfuser/python_frontend/fusion_record.h>
 #include <mutex>
 
 namespace nvfuser {

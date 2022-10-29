@@ -1,10 +1,10 @@
 #pragma once
 
-#include <torch/csrc/jit/codegen/cuda/fusion.h>
-#include <torch/csrc/jit/codegen/cuda/ir_all_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/iter_visitor.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/registry.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/utils.h>
+#include <third_party/nvfuser/fusion.h>
+#include <third_party/nvfuser/ir_all_nodes.h>
+#include <third_party/nvfuser/iter_visitor.h>
+#include <third_party/nvfuser/scheduler/registry.h>
+#include <third_party/nvfuser/scheduler/utils.h>
 
 namespace torch {
 namespace jit {

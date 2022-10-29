@@ -1,9 +1,9 @@
 #include <c10/util/irange.h>
 
 // Extract size and strides
-#include <torch/csrc/jit/codegen/cuda/kernel_cache.h>
+#include <third_party/nvfuser/kernel_cache.h>
 
-#include <torch/csrc/jit/codegen/cuda/executor_kernel_arg.h>
+#include <third_party/nvfuser/executor_kernel_arg.h>
 
 namespace torch {
 namespace jit {

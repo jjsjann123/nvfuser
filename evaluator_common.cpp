@@ -1,10 +1,10 @@
-#include <torch/csrc/jit/codegen/cuda/expr_evaluator.h>
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_expr_evaluator.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
+#include <third_party/nvfuser/expr_evaluator.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/kernel_expr_evaluator.h>
+#include <third_party/nvfuser/lower2device.h>
 
-#include <torch/csrc/jit/codegen/cuda/evaluator_common.h>
+#include <third_party/nvfuser/evaluator_common.h>
 
 namespace torch {
 namespace jit {

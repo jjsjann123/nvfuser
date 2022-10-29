@@ -1,11 +1,11 @@
 #pragma once
 #include <c10/macros/Export.h>
 
-#include <torch/csrc/jit/codegen/cuda/kernel_ir.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_ir_dispatch.h>
-#include <torch/csrc/jit/codegen/cuda/lower_thread_predicate.h>
-#include <torch/csrc/jit/codegen/cuda/lower_utils.h>
-#include <torch/csrc/jit/codegen/cuda/root_domain_map.h>
+#include <third_party/nvfuser/kernel_ir.h>
+#include <third_party/nvfuser/kernel_ir_dispatch.h>
+#include <third_party/nvfuser/lower_thread_predicate.h>
+#include <third_party/nvfuser/lower_utils.h>
+#include <third_party/nvfuser/root_domain_map.h>
 
 #include <bitset>
 #include <unordered_map>

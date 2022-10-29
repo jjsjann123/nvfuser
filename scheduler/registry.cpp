@@ -1,16 +1,16 @@
 #include <c10/util/irange.h>
-#include <torch/csrc/jit/codegen/cuda/disjoint_set.h>
-#include <torch/csrc/jit/codegen/cuda/executor_utils.h>
-#include <torch/csrc/jit/codegen/cuda/expr_evaluator.h>
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/ir_iostream.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/root_domain_map.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/debug_utils.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/pointwise.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/registry.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/transpose.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/utils.h>
+#include <third_party/nvfuser/disjoint_set.h>
+#include <third_party/nvfuser/executor_utils.h>
+#include <third_party/nvfuser/expr_evaluator.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/ir_iostream.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/root_domain_map.h>
+#include <third_party/nvfuser/scheduler/debug_utils.h>
+#include <third_party/nvfuser/scheduler/pointwise.h>
+#include <third_party/nvfuser/scheduler/registry.h>
+#include <third_party/nvfuser/scheduler/transpose.h>
+#include <third_party/nvfuser/scheduler/utils.h>
 
 #include <limits>
 

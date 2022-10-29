@@ -1,11 +1,11 @@
-#include <torch/csrc/jit/codegen/cuda/lower_magic_zero.h>
+#include <third_party/nvfuser/lower_magic_zero.h>
 
-#include <torch/csrc/jit/codegen/cuda/dispatch.h>
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_ir_dispatch.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
-#include <torch/csrc/jit/codegen/cuda/lower_index_compute.h>
+#include <third_party/nvfuser/dispatch.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/kernel_ir_dispatch.h>
+#include <third_party/nvfuser/lower2device.h>
+#include <third_party/nvfuser/lower_index_compute.h>
 
 namespace torch {
 namespace jit {

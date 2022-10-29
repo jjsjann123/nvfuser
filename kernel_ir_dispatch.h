@@ -1,6 +1,6 @@
 #pragma once
 
-#include <torch/csrc/jit/codegen/cuda/dispatch.h>
+#include <third_party/nvfuser/dispatch.h>
 
 namespace torch {
 namespace jit {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <torch/csrc/jit/codegen/cuda/utils.h>
+#include <third_party/nvfuser/utils.h>
 
 #include <nvToolsExt.h>
 

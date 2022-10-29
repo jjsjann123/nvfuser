@@ -1,9 +1,9 @@
 #pragma once
 
-#include <torch/csrc/jit/codegen/cuda/fusion.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/all_schedulers.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/pointwise_utils.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/utils.h>
+#include <third_party/nvfuser/fusion.h>
+#include <third_party/nvfuser/scheduler/all_schedulers.h>
+#include <third_party/nvfuser/scheduler/pointwise_utils.h>
+#include <third_party/nvfuser/scheduler/utils.h>
 
 namespace torch {
 namespace jit {

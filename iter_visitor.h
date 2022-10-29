@@ -2,8 +2,8 @@
 
 #include <c10/macros/Export.h>
 
-#include <torch/csrc/jit/codegen/cuda/dispatch.h>
-#include <torch/csrc/jit/codegen/cuda/type.h>
+#include <third_party/nvfuser/dispatch.h>
+#include <third_party/nvfuser/type.h>
 
 #include <deque>
 #include <unordered_set>

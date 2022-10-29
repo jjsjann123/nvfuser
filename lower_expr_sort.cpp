@@ -1,12 +1,12 @@
-#include <torch/csrc/jit/codegen/cuda/compute_at_map.h>
-#include <torch/csrc/jit/codegen/cuda/fusion.h>
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/ir_all_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/ir_iostream.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
-#include <torch/csrc/jit/codegen/cuda/lower_expr_sort.h>
-#include <torch/csrc/jit/codegen/cuda/lower_utils.h>
+#include <third_party/nvfuser/compute_at_map.h>
+#include <third_party/nvfuser/fusion.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/ir_all_nodes.h>
+#include <third_party/nvfuser/ir_iostream.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/lower2device.h>
+#include <third_party/nvfuser/lower_expr_sort.h>
+#include <third_party/nvfuser/lower_utils.h>
 
 #include <deque>
 #include <list>

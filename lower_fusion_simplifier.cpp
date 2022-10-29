@@ -1,8 +1,8 @@
-#include <torch/csrc/jit/codegen/cuda/ir_builder.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_ir_dispatch.h>
-#include <torch/csrc/jit/codegen/cuda/lower_utils.h>
+#include <third_party/nvfuser/ir_builder.h>
+#include <third_party/nvfuser/kernel_ir_dispatch.h>
+#include <third_party/nvfuser/lower_utils.h>
 
-#include <torch/csrc/jit/codegen/cuda/lower_fusion_simplifier.h>
+#include <third_party/nvfuser/lower_fusion_simplifier.h>
 
 namespace torch {
 namespace jit {

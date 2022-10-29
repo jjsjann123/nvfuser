@@ -1,6 +1,6 @@
 #pragma once
 
-#include <torch/csrc/jit/codegen/cuda/scheduler/heuristic.h>
+#include <third_party/nvfuser/scheduler/heuristic.h>
 
 #include <sstream>
 

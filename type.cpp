@@ -1,4 +1,4 @@
-#include <torch/csrc/jit/codegen/cuda/type.h>
+#include <third_party/nvfuser/type.h>
 
 #include <stdexcept>
 #include <unordered_map>

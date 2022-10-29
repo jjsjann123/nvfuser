@@ -1,12 +1,12 @@
-#include <torch/csrc/jit/codegen/cuda/contiguity.h>
-#include <torch/csrc/jit/codegen/cuda/index_compute.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
-#include <torch/csrc/jit/codegen/cuda/lower_index_compute.h>
-#include <torch/csrc/jit/codegen/cuda/lower_magic_zero.h>
-#include <torch/csrc/jit/codegen/cuda/lower_utils.h>
-#include <torch/csrc/jit/codegen/cuda/lower_validation.h>
-#include <torch/csrc/jit/codegen/cuda/transform_iter.h>
+#include <third_party/nvfuser/contiguity.h>
+#include <third_party/nvfuser/index_compute.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/lower2device.h>
+#include <third_party/nvfuser/lower_index_compute.h>
+#include <third_party/nvfuser/lower_magic_zero.h>
+#include <third_party/nvfuser/lower_utils.h>
+#include <third_party/nvfuser/lower_validation.h>
+#include <third_party/nvfuser/transform_iter.h>
 
 namespace torch {
 namespace jit {

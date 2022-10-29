@@ -2,7 +2,7 @@
 
 #include <cstddef>
 
-#include <torch/csrc/jit/codegen/cuda/ir_all_nodes.h>
+#include <third_party/nvfuser/ir_all_nodes.h>
 
 // Tests go in torch::jit
 namespace torch {

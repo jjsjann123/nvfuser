@@ -1,11 +1,11 @@
 #pragma once
 
-#include <torch/csrc/jit/codegen/cuda/fusion.h>
-#include <torch/csrc/jit/codegen/cuda/ir_base_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/kernel_cache.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/all_schedulers.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/registry.h>
-#include <torch/csrc/jit/codegen/cuda/utils.h>
+#include <third_party/nvfuser/fusion.h>
+#include <third_party/nvfuser/ir_base_nodes.h>
+#include <third_party/nvfuser/kernel_cache.h>
+#include <third_party/nvfuser/scheduler/all_schedulers.h>
+#include <third_party/nvfuser/scheduler/registry.h>
+#include <third_party/nvfuser/utils.h>
 
 #include <deque>
 #include <list>

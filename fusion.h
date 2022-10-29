@@ -4,9 +4,9 @@
 #include <c10/macros/Export.h>
 #include <c10/util/Exception.h>
 
-#include <torch/csrc/jit/codegen/cuda/ir_base_nodes.h>
-#include <torch/csrc/jit/codegen/cuda/ir_container.h>
-#include <torch/csrc/jit/codegen/cuda/iter_visitor.h>
+#include <third_party/nvfuser/ir_base_nodes.h>
+#include <third_party/nvfuser/ir_container.h>
+#include <third_party/nvfuser/iter_visitor.h>
 
 #include <unordered_map>
 #include <unordered_set>

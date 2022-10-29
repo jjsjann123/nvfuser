@@ -1,12 +1,12 @@
-#include <torch/csrc/jit/codegen/cuda/arith.h>
-#include <torch/csrc/jit/codegen/cuda/index_compute.h>
-#include <torch/csrc/jit/codegen/cuda/ir_iostream.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
-#include <torch/csrc/jit/codegen/cuda/lower_utils.h>
-#include <torch/csrc/jit/codegen/cuda/predicate_compute.h>
+#include <third_party/nvfuser/arith.h>
+#include <third_party/nvfuser/index_compute.h>
+#include <third_party/nvfuser/ir_iostream.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/lower2device.h>
+#include <third_party/nvfuser/lower_utils.h>
+#include <third_party/nvfuser/predicate_compute.h>
 
-#include <torch/csrc/jit/codegen/cuda/lower_index.h>
+#include <third_party/nvfuser/lower_index.h>
 
 namespace torch {
 namespace jit {

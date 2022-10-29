@@ -9,7 +9,7 @@
 #include <vector>
 
 // For printing of the set when using a Statement as the type for the set
-#include <torch/csrc/jit/codegen/cuda/ir_base_nodes.h>
+#include <third_party/nvfuser/ir_base_nodes.h>
 
 namespace torch {
 namespace jit {

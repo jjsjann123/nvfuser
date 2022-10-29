@@ -1,15 +1,15 @@
-#include <torch/csrc/jit/codegen/cuda/scheduler/registry.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/utils.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/vectorize_helper.h>
+#include <third_party/nvfuser/scheduler/registry.h>
+#include <third_party/nvfuser/scheduler/utils.h>
+#include <third_party/nvfuser/scheduler/vectorize_helper.h>
 
-#include <torch/csrc/jit/codegen/cuda/compute_at_map.h>
-#include <torch/csrc/jit/codegen/cuda/contiguity.h>
-#include <torch/csrc/jit/codegen/cuda/expr_evaluator.h>
-#include <torch/csrc/jit/codegen/cuda/instrumentation.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/root_domain_map.h>
-#include <torch/csrc/jit/codegen/cuda/scheduler/mma_utils.h>
-#include <torch/csrc/jit/codegen/cuda/transform_replay.h>
+#include <third_party/nvfuser/compute_at_map.h>
+#include <third_party/nvfuser/contiguity.h>
+#include <third_party/nvfuser/expr_evaluator.h>
+#include <third_party/nvfuser/instrumentation.h>
+#include <third_party/nvfuser/ir_utils.h>
+#include <third_party/nvfuser/root_domain_map.h>
+#include <third_party/nvfuser/scheduler/mma_utils.h>
+#include <third_party/nvfuser/transform_replay.h>
 
 namespace torch {
 namespace jit {

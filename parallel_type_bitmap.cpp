@@ -1,4 +1,4 @@
-#include <torch/csrc/jit/codegen/cuda/parallel_type_bitmap.h>
+#include <third_party/nvfuser/parallel_type_bitmap.h>
 
 namespace torch {
 namespace jit {

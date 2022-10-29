@@ -2,8 +2,8 @@
 
 #include <c10/macros/Export.h>
 
-#include <torch/csrc/jit/codegen/cuda/dispatch.h>
-#include <torch/csrc/jit/codegen/cuda/ir_base_nodes.h>
+#include <third_party/nvfuser/dispatch.h>
+#include <third_party/nvfuser/ir_base_nodes.h>
 
 #include <unordered_map>
 
