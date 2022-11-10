@@ -1,7 +1,7 @@
-#include <torch/csrc/jit/codegen/cuda/swizzle.h>
+#include "swizzle.h"
 
-#include <torch/csrc/jit/codegen/cuda/arith.h>
-#include <torch/csrc/jit/codegen/cuda/ir_builder.h>
+#include "arith.h"
+#include "ir_builder.h"
 
 namespace torch {
 namespace jit {

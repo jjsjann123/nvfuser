@@ -1,9 +1,9 @@
-#include <torch/csrc/jit/codegen/cuda/parallel_dimension_map.h>
+#include "parallel_dimension_map.h"
 
 #include <ATen/cuda/CUDAContext.h>
-#include <torch/csrc/jit/codegen/cuda/ir_utils.h>
-#include <torch/csrc/jit/codegen/cuda/iter_visitor.h>
-#include <torch/csrc/jit/codegen/cuda/lower2device.h>
+#include "ir_utils.h"
+#include "iter_visitor.h"
+#include "lower2device.h"
 
 #include <sstream>
 

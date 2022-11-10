@@ -1,12 +1,12 @@
 #if defined(USE_CUDA)
 #include <gtest/gtest.h>
 
-#include <torch/csrc/jit/codegen/cuda/kernel_cache.h>
-#include <torch/csrc/jit/codegen/cuda/ops/all_ops.h>
-#include <torch/csrc/jit/codegen/cuda/swizzle.h>
-#include <torch/csrc/jit/codegen/cuda/test/test_gpu_validator.h>
-#include <torch/csrc/jit/codegen/cuda/test/test_utils.h>
-#include <torch/csrc/jit/codegen/cuda/transform_iter.h>
+#include "kernel_cache.h"
+#include "ops/all_ops.h"
+#include "swizzle.h"
+#include "test/test_gpu_validator.h"
+#include "test/test_utils.h"
+#include "transform_iter.h"
 
 // Tests go in torch::jit
 namespace torch {
