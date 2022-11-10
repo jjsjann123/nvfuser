@@ -4,8 +4,8 @@ project(nvfuser)
 # ---
 set(NVFUSER_ROOT ${PROJECT_SOURCE_DIR})
 
-
 # --- hacky variables
+find_package(Python REQUIRED)
 set(MKL_THREADING CACHE STRING "gnu_thread")
 set(MKL_ROOT CACHE STRING "/opt/conda/lib/")
 set(TORCH_CUDA_ARCH_LIST CACHE STRING "8.0")
@@ -13,8 +13,9 @@ option(USE_ROCM "Use ROCM" OFF)
 set(TORCH_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../..")
 list(APPEND CMAKE_PREFIX_PATH "/opt/pytorch/pytorch/torch/")
 link_directories(/opt/conda/lib/)
-set(CMAKE_BINARY_DIR "${NVFUSER_ROOT}/build")
-file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}")
+#set(CMAKE_BINARY_DIR "${NVFUSER_ROOT}/build")
+#file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}")
+set(PYTHON_EXECUTABLE "${_Python_EXECUTABLE}")
 
 # --- dependencies
 find_package(Torch REQUIRED)
@@ -98,4 +99,3 @@ foreach(src ${NVFUSER_RUNTIME_FILES})
 endforeach()
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_BINARY_DIR}/include")
-
