@@ -23,9 +23,9 @@ find_package(OpenMP REQUIRED)
 # --- [ fake project
 
 add_executable(${PROJECT_NAME} toy.cpp)
-target_link_libraries(toy PRIVATE ${TORCH_LIBRARIES})
-target_compile_options(toy PRIVATE ${OpenMP_CXX_OPTIONS})
-target_link_libraries(toy PRIVATE ${OpenMP_CXX_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${TORCH_LIBRARIES})
+target_compile_options(${PROJECT_NAME} PRIVATE ${OpenMP_CXX_OPTIONS})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenMP_CXX_LIBRARIES})
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
 
 # --- generate runtime files
