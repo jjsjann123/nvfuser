@@ -6,9 +6,9 @@ set(NVFUSER_ROOT ${PROJECT_SOURCE_DIR})
 
 
 # --- hacky variables
-set(MKL_THREADING CACHE "gnu_thread")
-set(MKL_ROOT CACHE "/opt/conda/lib/")
-set(TORCH_CUDA_ARCH_LIST CACHE "8.0")
+set(MKL_THREADING CACHE STRING "gnu_thread")
+set(MKL_ROOT CACHE STRING "/opt/conda/lib/")
+set(TORCH_CUDA_ARCH_LIST CACHE STRING "8.0")
 option(USE_ROCM "Use ROCM" OFF)
 set(TORCH_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../..")
 list(APPEND CMAKE_PREFIX_PATH "/opt/pytorch/pytorch/torch/")
@@ -19,6 +19,14 @@ file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}")
 # --- dependencies
 find_package(Torch REQUIRED)
 find_package(OpenMP REQUIRED)
+
+# --- [ fake project
+
+add_executable(${PROJECT_NAME} toy.cpp)
+target_link_libraries(toy PRIVATE ${TORCH_LIBRARIES})
+target_compile_options(toy PRIVATE ${OpenMP_CXX_OPTIONS})
+target_link_libraries(toy PRIVATE ${OpenMP_CXX_LIBRARIES})
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
 
 # --- generate runtime files
 
@@ -90,12 +98,4 @@ foreach(src ${NVFUSER_RUNTIME_FILES})
 endforeach()
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_BINARY_DIR}/include")
-
-# --- [ fake project
-
-add_executable(${PROJECT_NAME} toy.cpp) 
-target_link_libraries(toy PRIVATE ${TORCH_LIBRARIES})
-target_compile_options(toy PRIVATE ${OpenMP_CXX_OPTIONS})
-target_link_libraries(toy PRIVATE ${OpenMP_CXX_LIBRARIES})
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
 
