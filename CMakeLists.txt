@@ -21,12 +21,122 @@ set(PYTHON_EXECUTABLE "${_Python_EXECUTABLE}")
 find_package(Torch REQUIRED)
 find_package(OpenMP REQUIRED)
 
-# --- [ fake project
+# --- project
 
-add_executable(${PROJECT_NAME} toy.cpp)
+set(NVFUSER_SRCS)
+set(NVFUSER_SRCS_DIR "${NVFUSER_ROOT}/src")
+
+list(APPEND NVFUSER_SRCS
+    ${NVFUSER_SRCS_DIR}/arith.cpp
+    ${NVFUSER_SRCS_DIR}/compute_at.cpp
+    ${NVFUSER_SRCS_DIR}/inlining.cpp
+    ${NVFUSER_SRCS_DIR}/compute_at_map.cpp
+    ${NVFUSER_SRCS_DIR}/codegen.cpp
+    ${NVFUSER_SRCS_DIR}/contiguity.cpp
+    ${NVFUSER_SRCS_DIR}/dispatch.cpp
+    ${NVFUSER_SRCS_DIR}/expr_evaluator.cpp
+    ${NVFUSER_SRCS_DIR}/executor.cpp
+    ${NVFUSER_SRCS_DIR}/executor_kernel_arg.cpp
+    ${NVFUSER_SRCS_DIR}/executor_launch_params.cpp
+    ${NVFUSER_SRCS_DIR}/evaluator_common.cpp
+    ${NVFUSER_SRCS_DIR}/executor_utils.cpp
+    ${NVFUSER_SRCS_DIR}/fusion.cpp
+    ${NVFUSER_SRCS_DIR}/graph_fuser.cpp
+    ${NVFUSER_SRCS_DIR}/grouped_reduction.cpp
+    ${NVFUSER_SRCS_DIR}/index_compute.cpp
+    ${NVFUSER_SRCS_DIR}/lower_index_compute.cpp
+    ${NVFUSER_SRCS_DIR}/instrumentation.cpp
+    ${NVFUSER_SRCS_DIR}/ir_base_nodes.cpp
+    ${NVFUSER_SRCS_DIR}/ir_builder.cpp
+    ${NVFUSER_SRCS_DIR}/ir_cloner.cpp
+    ${NVFUSER_SRCS_DIR}/ir_container.cpp
+    ${NVFUSER_SRCS_DIR}/ir_graphviz.cpp
+    ${NVFUSER_SRCS_DIR}/ir_nodes.cpp
+    ${NVFUSER_SRCS_DIR}/ir_iostream.cpp
+    ${NVFUSER_SRCS_DIR}/ir_utils.cpp
+    ${NVFUSER_SRCS_DIR}/iter_visitor.cpp
+    ${NVFUSER_SRCS_DIR}/kernel.cpp
+    ${NVFUSER_SRCS_DIR}/kernel_cache.cpp
+    ${NVFUSER_SRCS_DIR}/kernel_ir.cpp
+    ${NVFUSER_SRCS_DIR}/kernel_ir_dispatch.cpp
+    ${NVFUSER_SRCS_DIR}/lower_alias_memory.cpp
+    ${NVFUSER_SRCS_DIR}/lower_allocation.cpp
+    ${NVFUSER_SRCS_DIR}/lower_double_buffer.cpp
+    ${NVFUSER_SRCS_DIR}/lower_divisible_split.cpp
+    ${NVFUSER_SRCS_DIR}/lower_expr_sort.cpp
+    ${NVFUSER_SRCS_DIR}/lower_fused_reduction.cpp
+    ${NVFUSER_SRCS_DIR}/lower_fusion_simplifier.cpp
+    ${NVFUSER_SRCS_DIR}/lower_index.cpp
+    ${NVFUSER_SRCS_DIR}/lower_index_hoist.cpp
+    ${NVFUSER_SRCS_DIR}/lower_insert_syncs.cpp
+    ${NVFUSER_SRCS_DIR}/lower_instrument.cpp
+    ${NVFUSER_SRCS_DIR}/lower_loops.cpp
+    ${NVFUSER_SRCS_DIR}/lower_magic_zero.cpp
+    ${NVFUSER_SRCS_DIR}/lower_misaligned_vectorization.cpp
+    ${NVFUSER_SRCS_DIR}/lower_predicate.cpp
+    ${NVFUSER_SRCS_DIR}/lower_predicate_elimination.cpp
+    ${NVFUSER_SRCS_DIR}/lower_replace_size.cpp
+    ${NVFUSER_SRCS_DIR}/lower_shift.cpp
+    ${NVFUSER_SRCS_DIR}/lower_sync_information.cpp
+    ${NVFUSER_SRCS_DIR}/lower_thread_predicate.cpp
+    ${NVFUSER_SRCS_DIR}/lower_trivial_broadcast.cpp
+    ${NVFUSER_SRCS_DIR}/lower_unroll.cpp
+    ${NVFUSER_SRCS_DIR}/lower_utils.cpp
+    ${NVFUSER_SRCS_DIR}/lower_validation.cpp
+    ${NVFUSER_SRCS_DIR}/lower_warp_reduce.cpp
+    ${NVFUSER_SRCS_DIR}/lower2device.cpp
+    ${NVFUSER_SRCS_DIR}/lower_bank_conflict.cpp
+    ${NVFUSER_SRCS_DIR}/manager.cpp
+    ${NVFUSER_SRCS_DIR}/maxinfo_propagator.cpp
+    ${NVFUSER_SRCS_DIR}/mutator.cpp
+    ${NVFUSER_SRCS_DIR}/non_divisible_split.cpp
+    ${NVFUSER_SRCS_DIR}/ops/alias.cpp
+    ${NVFUSER_SRCS_DIR}/ops/composite.cpp
+    ${NVFUSER_SRCS_DIR}/ops/normalization.cpp
+    ${NVFUSER_SRCS_DIR}/parallel_dimension_map.cpp
+    ${NVFUSER_SRCS_DIR}/parallel_type_bitmap.cpp
+    ${NVFUSER_SRCS_DIR}/parser.cpp
+    ${NVFUSER_SRCS_DIR}/partial_split_map.cpp
+    ${NVFUSER_SRCS_DIR}/partition.cpp
+    ${NVFUSER_SRCS_DIR}/predicate_compute.cpp
+    ${NVFUSER_SRCS_DIR}/python_frontend/fusion_cache.cpp
+    ${NVFUSER_SRCS_DIR}/python_frontend/fusion_definition.cpp
+    ${NVFUSER_SRCS_DIR}/python_frontend/fusion_interface.cpp
+    ${NVFUSER_SRCS_DIR}/register_interface.cpp
+    ${NVFUSER_SRCS_DIR}/root_domain_map.cpp
+    ${NVFUSER_SRCS_DIR}/scheduler/pointwise.cpp
+    ${NVFUSER_SRCS_DIR}/scheduler/pointwise_utils.cpp
+    ${NVFUSER_SRCS_DIR}/scheduler/transpose.cpp
+    ${NVFUSER_SRCS_DIR}/scheduler/normalization.cpp
+    ${NVFUSER_SRCS_DIR}/scheduler/reduction.cpp
+    ${NVFUSER_SRCS_DIR}/scheduler/matmul.cpp
+    ${NVFUSER_SRCS_DIR}/scheduler/reduction_utils.cpp
+    ${NVFUSER_SRCS_DIR}/scheduler/registry.cpp
+    ${NVFUSER_SRCS_DIR}/scheduler/utils.cpp
+    ${NVFUSER_SRCS_DIR}/scheduler/vectorize_helper.cpp
+    ${NVFUSER_SRCS_DIR}/swizzle.cpp
+    ${NVFUSER_SRCS_DIR}/type_inference.cpp
+    ${NVFUSER_SRCS_DIR}/type_promotion.cpp
+    ${NVFUSER_SRCS_DIR}/fusion_segmenter.cpp
+    ${NVFUSER_SRCS_DIR}/tensor_view.cpp
+    ${NVFUSER_SRCS_DIR}/transform_iter.cpp
+    ${NVFUSER_SRCS_DIR}/transform_replay.cpp
+    ${NVFUSER_SRCS_DIR}/transform_rfactor.cpp
+    ${NVFUSER_SRCS_DIR}/transform_view.cpp
+    ${NVFUSER_SRCS_DIR}/type.cpp
+    ${NVFUSER_SRCS_DIR}/utils.cpp
+    ${NVFUSER_SRCS_DIR}/mma_type.cpp
+    ${NVFUSER_SRCS_DIR}/scheduler/mma_utils.cpp
+)
+
+
+# add_executable(${PROJECT_NAME} toy.cpp)
+add_library(${PROJECT_NAME} ${NVFUSER_SRCS})
+
 target_link_libraries(${PROJECT_NAME} PRIVATE ${TORCH_LIBRARIES})
 target_compile_options(${PROJECT_NAME} PRIVATE ${OpenMP_CXX_OPTIONS})
 target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenMP_CXX_LIBRARIES})
+target_include_directories(${PROJECT_NAME} PRIVATE "${NVFUSER_SRCS_DIR}")
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
 
 # --- generate runtime files
