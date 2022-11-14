@@ -133,10 +133,10 @@ list(APPEND NVFUSER_SRCS
 # add_executable(${PROJECT_NAME} toy.cpp)
 add_library(${PROJECT_NAME} ${NVFUSER_SRCS})
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ${TORCH_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${TORCH_LIBRARIES} ${CUDA_NVRTC_LIB})
 target_compile_options(${PROJECT_NAME} PRIVATE ${OpenMP_CXX_OPTIONS})
 target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenMP_CXX_LIBRARIES})
-target_include_directories(${PROJECT_NAME} PRIVATE "${NVFUSER_SRCS_DIR}")
+target_include_directories(${PROJECT_NAME} PRIVATE ${NVFUSER_SRCS_DIR} ${CUDA_INCLUDE_DIRS})
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
 
 # --- generate runtime files

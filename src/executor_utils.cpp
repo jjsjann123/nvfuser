@@ -1,6 +1,5 @@
 #include <ATen/cuda/CUDAContext.h>
 #include <ATen/cuda/CUDAGeneratorImpl.h>
-#include <ATen/cuda/nvrtc_stub/ATenNVRTC.h>
 
 #include <c10/util/irange.h>
 
@@ -49,6 +48,7 @@
 #include <cuda_occupancy.h>
 #endif
 
+#include <nvrtc.h>
 #include <fstream>
 
 namespace torch {
@@ -925,7 +925,7 @@ void initializeCudaContext() {
   // lazily construct context if non-existing yet;
   // NOLINTNEXTLINE(cppcoreguidelines-init-variables)
   CUcontext pctx = nullptr;
-  AT_CUDA_DRIVER_CHECK(at::globalContext().getNVRTC().cuCtxGetCurrent(&pctx));
+  AT_CUDA_DRIVER_CHECK(cuCtxGetCurrent(&pctx));
   if (!pctx) {
     std::unique_lock<std::mutex> cudaFreeMutexLock(
         *(c10::cuda::getFreeMutex()));
@@ -942,10 +942,10 @@ void dumpCompiledCodeToFile(
     int fusion_id,
     bool dump_cubin) {
   const auto getSize = dump_cubin
-      ? at::globalContext().getNVRTC().nvrtcGetCUBINSize
-      : at::globalContext().getNVRTC().nvrtcGetPTXSize;
-  const auto getCode = dump_cubin ? at::globalContext().getNVRTC().nvrtcGetCUBIN
-                                  : at::globalContext().getNVRTC().nvrtcGetPTX;
+      ? nvrtcGetCUBINSize
+      : nvrtcGetPTXSize;
+  const auto getCode = dump_cubin ? nvrtcGetCUBIN
+                                  : nvrtcGetPTX;
   size_t size = 0;
   AT_CUDA_NVRTC_CHECK(getSize(program, &size));
   std::vector<char> code(size);
@@ -991,14 +991,14 @@ std::pair<NvrtcFunction, std::string> nvrtcCompile(
     ss << "__tmp_kernel" << id << ".cu";
     std::string name = ss.str();
     FUSER_PERF_SCOPE("executor_utils::NvrtcCreateProgram");
-    AT_CUDA_NVRTC_CHECK(at::globalContext().getNVRTC().nvrtcCreateProgram(
+    AT_CUDA_NVRTC_CHECK(nvrtcCreateProgram(
         &program, code.c_str(), name.c_str(), 0, nullptr, nullptr));
   }
 
   ResourceGuard holdProgram([&] {
     FUSER_PERF_SCOPE("executor_utils::NvrtcDestroyProgram");
     AT_CUDA_NVRTC_CHECK(
-        at::globalContext().getNVRTC().nvrtcDestroyProgram(&program));
+        nvrtcDestroyProgram(&program));
   });
 
 #ifdef USE_ROCM
@@ -1154,20 +1154,20 @@ std::pair<NvrtcFunction, std::string> nvrtcCompile(
   }
 #endif
 
-  at::globalContext().getNVRTC().nvrtcAddNameExpression(
+  nvrtcAddNameExpression(
       program, func_name.c_str());
 
   {
     FUSER_PERF_SCOPE("executor_utils::Nvrtc::CompileProgram");
 
-    const auto result = at::globalContext().getNVRTC().nvrtcCompileProgram(
+    const auto result = nvrtcCompileProgram(
         program, args.size(), args.data());
 
     size_t logsize = 0;
-    at::globalContext().getNVRTC().nvrtcGetProgramLogSize(program, &logsize);
+    nvrtcGetProgramLogSize(program, &logsize);
 
     std::vector<char> log(logsize);
-    at::globalContext().getNVRTC().nvrtcGetProgramLog(program, log.data());
+    nvrtcGetProgramLog(program, log.data());
 
     if (result != NVRTC_SUCCESS) {
       TORCH_INTERNAL_ASSERT(
@@ -1182,7 +1182,7 @@ std::pair<NvrtcFunction, std::string> nvrtcCompile(
   }
 
   const char* lowered_kernel_name = nullptr;
-  at::globalContext().getNVRTC().nvrtcGetLoweredName(
+  nvrtcGetLoweredName(
       program, func_name.c_str(), &lowered_kernel_name);
 
   size_t ptx_size = 0;
@@ -1195,14 +1195,14 @@ std::pair<NvrtcFunction, std::string> nvrtcCompile(
     // compile_to_sass determines whether we are generating SASS or PTX, hence
     // the different API.
     const auto getSize = compile_to_sass
-        ? at::globalContext().getNVRTC().nvrtcGetCUBINSize
-        : at::globalContext().getNVRTC().nvrtcGetPTXSize;
+        ? nvrtcGetCUBINSize
+        : nvrtcGetPTXSize;
     const auto getFunc = compile_to_sass
-        ? at::globalContext().getNVRTC().nvrtcGetCUBIN
-        : at::globalContext().getNVRTC().nvrtcGetPTX;
+        ? nvrtcGetCUBIN
+        : nvrtcGetPTX;
 #else
-    const auto getSize = at::globalContext().getNVRTC().nvrtcGetPTXSize;
-    const auto getFunc = at::globalContext().getNVRTC().nvrtcGetPTX;
+    const auto getSize = nvrtcGetPTXSize;
+    const auto getFunc = nvrtcGetPTX;
 #endif
     AT_CUDA_NVRTC_CHECK(getSize(program, &ptx_size));
     ptx.resize(ptx_size);
@@ -1230,7 +1230,7 @@ std::pair<NvrtcFunction, std::string> nvrtcCompile(
     FUSER_PERF_SCOPE("executor_utils::Nvrtc::LoadPTX");
 
     // load ptx or cubin directly
-    AT_CUDA_DRIVER_CHECK(at::globalContext().getNVRTC().cuModuleLoadDataEx(
+    AT_CUDA_DRIVER_CHECK(cuModuleLoadDataEx(
         &(compiled_kernel_.module),
         ptx.data(),
         options.size(),
@@ -1244,11 +1244,11 @@ std::pair<NvrtcFunction, std::string> nvrtcCompile(
   }
 #else
   // load ptx directly
-  AT_CUDA_DRIVER_CHECK(at::globalContext().getNVRTC().cuModuleLoadData(
+  AT_CUDA_DRIVER_CHECK(cuModuleLoadData(
       &(compiled_kernel_.module), ptx.data()));
 
 #endif
-  AT_CUDA_DRIVER_CHECK(at::globalContext().getNVRTC().cuModuleGetFunction(
+  AT_CUDA_DRIVER_CHECK(cuModuleGetFunction(
       &(compiled_kernel_.function),
       compiled_kernel_.module,
       lowered_kernel_name));
