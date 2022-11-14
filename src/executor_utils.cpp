@@ -947,9 +947,9 @@ void dumpCompiledCodeToFile(
   const auto getCode = dump_cubin ? nvrtcGetCUBIN
                                   : nvrtcGetPTX;
   size_t size = 0;
-  AT_CUDA_NVRTC_CHECK(getSize(program, &size));
+  NVRTC_SAFE_CALL(getSize(program, &size));
   std::vector<char> code(size);
-  AT_CUDA_NVRTC_CHECK(getCode(program, code.data()));
+  NVRTC_SAFE_CALL(getCode(program, code.data()));
   std::stringstream file_name;
   file_name << "__tmp_kernel" << fusion_id << "."
             << (dump_cubin ? "cubin" : "ptx");
@@ -991,13 +991,13 @@ std::pair<NvrtcFunction, std::string> nvrtcCompile(
     ss << "__tmp_kernel" << id << ".cu";
     std::string name = ss.str();
     FUSER_PERF_SCOPE("executor_utils::NvrtcCreateProgram");
-    AT_CUDA_NVRTC_CHECK(nvrtcCreateProgram(
+    NVRTC_SAFE_CALL(nvrtcCreateProgram(
         &program, code.c_str(), name.c_str(), 0, nullptr, nullptr));
   }
 
   ResourceGuard holdProgram([&] {
     FUSER_PERF_SCOPE("executor_utils::NvrtcDestroyProgram");
-    AT_CUDA_NVRTC_CHECK(
+    NVRTC_SAFE_CALL(
         nvrtcDestroyProgram(&program));
   });
 
@@ -1178,7 +1178,7 @@ std::pair<NvrtcFunction, std::string> nvrtcCompile(
     if (isDebugDumpEnabled(DebugDumpOption::PrintPtxasLog)) {
       std::cout << log.data() << std::endl;
     }
-    AT_CUDA_NVRTC_CHECK(result);
+    NVRTC_SAFE_CALL(result);
   }
 
   const char* lowered_kernel_name = nullptr;
@@ -1204,9 +1204,9 @@ std::pair<NvrtcFunction, std::string> nvrtcCompile(
     const auto getSize = nvrtcGetPTXSize;
     const auto getFunc = nvrtcGetPTX;
 #endif
-    AT_CUDA_NVRTC_CHECK(getSize(program, &ptx_size));
+    NVRTC_SAFE_CALL(getSize(program, &ptx_size));
     ptx.resize(ptx_size);
-    AT_CUDA_NVRTC_CHECK(getFunc(program, ptx.data()));
+    NVRTC_SAFE_CALL(getFunc(program, ptx.data()));
   }
 
   NvrtcFunction compiled_kernel_;
