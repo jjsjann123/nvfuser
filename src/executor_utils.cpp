@@ -925,7 +925,7 @@ void initializeCudaContext() {
   // lazily construct context if non-existing yet;
   // NOLINTNEXTLINE(cppcoreguidelines-init-variables)
   CUcontext pctx = nullptr;
-  AT_CUDA_DRIVER_CHECK(cuCtxGetCurrent(&pctx));
+  CUDA_SAFE_CALL(cuCtxGetCurrent(&pctx));
   if (!pctx) {
     std::unique_lock<std::mutex> cudaFreeMutexLock(
         *(c10::cuda::getFreeMutex()));
@@ -1230,7 +1230,7 @@ std::pair<NvrtcFunction, std::string> nvrtcCompile(
     FUSER_PERF_SCOPE("executor_utils::Nvrtc::LoadPTX");
 
     // load ptx or cubin directly
-    AT_CUDA_DRIVER_CHECK(cuModuleLoadDataEx(
+    CUDA_SAFE_CALL(cuModuleLoadDataEx(
         &(compiled_kernel_.module),
         ptx.data(),
         options.size(),
@@ -1244,11 +1244,11 @@ std::pair<NvrtcFunction, std::string> nvrtcCompile(
   }
 #else
   // load ptx directly
-  AT_CUDA_DRIVER_CHECK(cuModuleLoadData(
+  CUDA_SAFE_CALL(cuModuleLoadData(
       &(compiled_kernel_.module), ptx.data()));
 
 #endif
-  AT_CUDA_DRIVER_CHECK(cuModuleGetFunction(
+  CUDA_SAFE_CALL(cuModuleGetFunction(
       &(compiled_kernel_.function),
       compiled_kernel_.module,
       lowered_kernel_name));

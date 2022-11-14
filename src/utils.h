@@ -5,10 +5,24 @@
 #include "type.h"
 #include <torch/csrc/jit/ir/ir.h>
 
+#include <cuda.h>
+
 namespace torch {
 namespace jit {
 namespace fuser {
 namespace cuda {
+
+#define CUDA_SAFE_CALL(x)                                         \
+  do {                                                            \
+    CUresult result = x;                                          \
+    if (result != CUDA_SUCCESS) {                                 \
+      const char *msg;                                            \
+      cuGetErrorName(result, &msg);                               \
+      std::cerr << "\nerror: " #x " failed with error "           \
+                << msg << '\n';                                   \
+      exit(1);                                                    \
+    }                                                             \
+  } while(0)
 
 void debugPrint(const c10::TensorTypePtr& type);
 

@@ -338,7 +338,7 @@ void FusionExecutor::compileFusion(
 #ifndef USE_ROCM
   // The driver API call requires an int argument.
   int max_dynamic_smem = 0;
-  AT_CUDA_DRIVER_CHECK(cuFuncGetAttribute(
+  CUDA_SAFE_CALL(cuFuncGetAttribute(
       &max_dynamic_smem,
       CU_FUNC_ATTRIBUTE_MAX_DYNAMIC_SHARED_SIZE_BYTES,
       compiled_kernel_.function));
@@ -1262,7 +1262,7 @@ std::vector<at::Tensor> FusionExecutor::runFusion(
         launch_params_.smem() > maybe_available_dynamic_smem_.value()) {
 #ifndef USE_ROCM
       // Increase limit of dynamic shared memory if needed.
-      AT_CUDA_DRIVER_CHECK(cuFuncSetAttribute(
+      CUDA_SAFE_CALL(cuFuncSetAttribute(
           compiled_kernel_.function,
           CU_FUNC_ATTRIBUTE_MAX_DYNAMIC_SHARED_SIZE_BYTES,
           launch_params_.smem()));
@@ -1273,7 +1273,7 @@ std::vector<at::Tensor> FusionExecutor::runFusion(
     }
     if (!kernel()->summary().has_cooperative_grid_reduction) {
       FUSER_PERF_SCOPE("ExecutorRunFusion::cuLaunchKernel");
-      AT_CUDA_DRIVER_CHECK(cuLaunchKernel(
+      CUDA_SAFE_CALL(cuLaunchKernel(
           compiled_kernel_.function,
           launch_params_.gdimx(),
           launch_params_.gdimy(),
@@ -1288,7 +1288,7 @@ std::vector<at::Tensor> FusionExecutor::runFusion(
     } else {
 #ifndef USE_ROCM
       FUSER_PERF_SCOPE("ExecutorRunFusion::cuLaunchCooperativeKernel");
-      AT_CUDA_DRIVER_CHECK(
+      CUDA_SAFE_CALL(
           cuLaunchCooperativeKernel(
               compiled_kernel_.function,
               launch_params_.gdimx(),
@@ -1377,7 +1377,7 @@ void FusionExecutor::runRtc(
 
   KernelArgumentHolder kernel_arguments(options_.index_mode);
   kernel_arguments.push(args);
-  AT_CUDA_DRIVER_CHECK(cuLaunchKernel(
+  CUDA_SAFE_CALL(cuLaunchKernel(
       compiled_kernel_.function,
       launch_params.gdimx(),
       launch_params.gdimy(),
