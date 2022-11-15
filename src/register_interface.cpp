@@ -1,4 +1,4 @@
-// #include "interface.h"
+#include "interface.h"
 #include "manager.h"
 #include "parser.h"
 #include "partition.h"
@@ -27,7 +27,6 @@ class RegisterInterface {
     ptr->fn_insert_profile_inodes = &InsertProfileNodes;
     ptr->fn_profile_n = &shouldProfileNode;
     ptr->fn_skip_n = &skipNodeKind;
-    ptr->fn_analyze_view = &analyzeViewConstraint;
   }
 };
 
