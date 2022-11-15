@@ -1,9 +1,10 @@
-#include "interface.h"
+// #include "interface.h"
 #include "manager.h"
 #include "parser.h"
 #include "partition.h"
 
 #include <torch/csrc/jit/runtime/profiling_record.h>
+#include <torch/csrc/jit/codegen/cuda/interface.h>
 
 /*
  * Registers function pointers in interface.h
