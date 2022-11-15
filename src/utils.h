@@ -2,7 +2,7 @@
 
 #include <ATen/ATen.h>
 #include <c10/util/Exception.h>
-#include "type.h"
+#include <type.h>
 #include <torch/csrc/jit/ir/ir.h>
 
 #include <cuda.h>

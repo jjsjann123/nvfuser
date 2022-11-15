@@ -1,6 +1,6 @@
 #pragma once
 
-#include "dispatch.h"
+#include <dispatch.h>
 
 namespace torch {
 namespace jit {

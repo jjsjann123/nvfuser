@@ -1,16 +1,16 @@
-#include "transform_replay.h"
+#include <transform_replay.h>
 
-#include "arith.h"
-#include "disjoint_set.h"
-#include "fusion.h"
-#include "instrumentation.h"
-#include "ir_all_nodes.h"
-#include "ir_builder.h"
-#include "ir_iostream.h"
-#include "ir_utils.h"
-#include "maxinfo_propagator.h"
-#include "root_domain_map.h"
-#include "transform_iter.h"
+#include <arith.h>
+#include <disjoint_set.h>
+#include <fusion.h>
+#include <instrumentation.h>
+#include <ir_all_nodes.h>
+#include <ir_builder.h>
+#include <ir_iostream.h>
+#include <ir_utils.h>
+#include <maxinfo_propagator.h>
+#include <root_domain_map.h>
+#include <transform_iter.h>
 
 #include <deque>
 

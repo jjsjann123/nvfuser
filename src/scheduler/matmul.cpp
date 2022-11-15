@@ -1,6 +1,6 @@
-#include "scheduler/matmul.h"
-#include "scheduler/mma_utils.h"
-#include "scheduler/utils.h"
+#include <scheduler/matmul.h>
+#include <scheduler/mma_utils.h>
+#include <scheduler/utils.h>
 
 namespace torch {
 namespace jit {

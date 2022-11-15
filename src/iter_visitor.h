@@ -2,8 +2,8 @@
 
 #include <c10/macros/Export.h>
 
-#include "dispatch.h"
-#include "type.h"
+#include <dispatch.h>
+#include <type.h>
 
 #include <deque>
 #include <unordered_set>

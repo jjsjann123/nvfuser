@@ -1,10 +1,10 @@
 #pragma once
 
-#include "index_compute.h"
-#include "kernel_ir.h"
-#include "lower_thread_predicate.h"
-#include "lower_utils.h"
-#include "root_domain_map.h"
+#include <index_compute.h>
+#include <kernel_ir.h>
+#include <lower_thread_predicate.h>
+#include <lower_utils.h>
+#include <root_domain_map.h>
 
 namespace torch {
 namespace jit {

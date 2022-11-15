@@ -2,8 +2,8 @@
 
 #include <c10/macros/Export.h>
 
-#include "ir_interface_nodes.h"
-#include "type.h"
+#include <ir_interface_nodes.h>
+#include <type.h>
 
 #include <utility>
 

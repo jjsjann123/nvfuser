@@ -1,8 +1,8 @@
-#include "ir_utils.h"
-#include "kernel_ir.h"
-#include "lower2device.h"
+#include <ir_utils.h>
+#include <kernel_ir.h>
+#include <lower2device.h>
 
-#include "lower_double_buffer.h"
+#include <lower_double_buffer.h>
 
 namespace torch {
 namespace jit {

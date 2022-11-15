@@ -1,10 +1,10 @@
-#include "expr_evaluator.h"
-#include "instrumentation.h"
-#include "ir_iostream.h"
-#include "kernel_ir.h"
-#include "kernel_ir_dispatch.h"
-#include "lower2device.h"
-#include "lower_allocation.h"
+#include <expr_evaluator.h>
+#include <instrumentation.h>
+#include <ir_iostream.h>
+#include <kernel_ir.h>
+#include <kernel_ir_dispatch.h>
+#include <lower2device.h>
+#include <lower_allocation.h>
 
 #include <unordered_set>
 

@@ -2,9 +2,9 @@
 
 #include <c10/macros/Export.h>
 
-#include "dispatch.h"
-#include "ir_all_nodes.h"
-#include "kernel_ir.h"
+#include <dispatch.h>
+#include <ir_all_nodes.h>
+#include <kernel_ir.h>
 
 #include <vector>
 

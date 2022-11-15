@@ -1,9 +1,9 @@
 #pragma once
 
-#include "compute_at_map.h"
-#include "ir_all_nodes.h"
-#include "ir_utils.h"
-#include "scheduler/utils.h"
+#include <compute_at_map.h>
+#include <ir_all_nodes.h>
+#include <ir_utils.h>
+#include <scheduler/utils.h>
 
 namespace torch {
 namespace jit {

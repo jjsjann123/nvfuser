@@ -1,5 +1,5 @@
-#include "maxinfo_propagator.h"
-#include "root_domain_map.h"
+#include <maxinfo_propagator.h>
+#include <root_domain_map.h>
 
 namespace torch {
 namespace jit {

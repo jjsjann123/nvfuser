@@ -1,17 +1,17 @@
-#include "arith.h"
-#include "codegen.h"
-#include "disjoint_set.h"
-#include "fusion.h"
-#include "fusion_segmenter.h"
-#include "instrumentation.h"
-#include "ir_all_nodes.h"
-#include "ir_cloner.h"
-#include "ir_printer.h"
-#include "ir_utils.h"
-#include "iter_visitor.h"
-#include "kernel.h"
-#include "lower2device.h"
-#include "lower_bank_conflict.h"
+#include <arith.h>
+#include <codegen.h>
+#include <disjoint_set.h>
+#include <fusion.h>
+#include <fusion_segmenter.h>
+#include <instrumentation.h>
+#include <ir_all_nodes.h>
+#include <ir_cloner.h>
+#include <ir_printer.h>
+#include <ir_utils.h>
+#include <iter_visitor.h>
+#include <kernel.h>
+#include <lower2device.h>
+#include <lower_bank_conflict.h>
 
 namespace torch {
 namespace jit {

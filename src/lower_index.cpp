@@ -1,12 +1,12 @@
-#include "arith.h"
-#include "index_compute.h"
-#include "ir_iostream.h"
-#include "ir_utils.h"
-#include "lower2device.h"
-#include "lower_utils.h"
-#include "predicate_compute.h"
+#include <arith.h>
+#include <index_compute.h>
+#include <ir_iostream.h>
+#include <ir_utils.h>
+#include <lower2device.h>
+#include <lower_utils.h>
+#include <predicate_compute.h>
 
-#include "lower_index.h"
+#include <lower_index.h>
 
 namespace torch {
 namespace jit {

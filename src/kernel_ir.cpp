@@ -1,10 +1,10 @@
-#include "expr_evaluator.h"
-#include "ir_builder.h"
-#include "kernel.h"
-#include "kernel_ir.h"
-#include "lower2device.h"
-#include "lower_utils.h"
-#include "type.h"
+#include <expr_evaluator.h>
+#include <ir_builder.h>
+#include <kernel.h>
+#include <kernel_ir.h>
+#include <lower2device.h>
+#include <lower_utils.h>
+#include <type.h>
 
 #include <iostream>
 

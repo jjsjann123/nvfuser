@@ -1,6 +1,6 @@
 #pragma once
 #include <c10/macros/Export.h>
-#include "fusion.h"
+#include <fusion.h>
 
 namespace torch {
 namespace jit {

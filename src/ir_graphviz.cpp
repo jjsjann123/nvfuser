@@ -1,9 +1,9 @@
-#include "ir_graphviz.h"
+#include <ir_graphviz.h>
 
-#include "fusion.h"
-#include "ir_all_nodes.h"
-#include "ir_builder.h"
-#include "type.h"
+#include <fusion.h>
+#include <ir_all_nodes.h>
+#include <ir_builder.h>
+#include <type.h>
 
 #include <fstream>
 

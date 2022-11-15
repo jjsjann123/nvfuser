@@ -3,9 +3,9 @@
 
 #include <c10/macros/Export.h>
 
-#include "ir_all_nodes.h"
-#include "lower_utils.h"
-#include "parallel_type_bitmap.h"
+#include <ir_all_nodes.h>
+#include <lower_utils.h>
+#include <parallel_type_bitmap.h>
 
 #include <unordered_map>
 #include <unordered_set>

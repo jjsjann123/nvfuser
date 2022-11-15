@@ -1,11 +1,11 @@
 #pragma once
 
-#include "evaluator_common.h"
-#include "executor.h"
-#include "fusion.h"
-#include "fusion_segmenter.h"
-#include "scheduler/all_schedulers.h"
-#include "scheduler/registry.h"
+#include <evaluator_common.h>
+#include <executor.h>
+#include <fusion.h>
+#include <fusion_segmenter.h>
+#include <scheduler/all_schedulers.h>
+#include <scheduler/registry.h>
 
 #include <c10/macros/Export.h>
 #include <c10/util/ArrayRef.h>

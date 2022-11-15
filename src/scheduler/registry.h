@@ -1,13 +1,13 @@
 #pragma once
-#include "executor_kernel_arg.h"
-#include "fusion.h"
-#include "scheduler/all_schedulers.h"
-#include "scheduler/compile_time_info.h"
-#include "scheduler/heuristic.h"
-#include "scheduler/pointwise_heuristic.h"
-#include "scheduler/reduction_heuristic.h"
-#include "scheduler/utils.h"
-#include "utils.h"
+#include <executor_kernel_arg.h>
+#include <fusion.h>
+#include <scheduler/all_schedulers.h>
+#include <scheduler/compile_time_info.h>
+#include <scheduler/heuristic.h>
+#include <scheduler/pointwise_heuristic.h>
+#include <scheduler/reduction_heuristic.h>
+#include <scheduler/utils.h>
+#include <utils.h>
 
 namespace torch {
 namespace jit {

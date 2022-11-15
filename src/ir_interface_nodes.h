@@ -2,10 +2,10 @@
 
 #include <c10/macros/Export.h>
 
-#include "fusion.h"
-#include "ir_base_nodes.h"
-#include "ir_internal_nodes.h"
-#include "mma_type.h"
+#include <fusion.h>
+#include <ir_base_nodes.h>
+#include <ir_internal_nodes.h>
+#include <mma_type.h>
 
 #include <torch/csrc/jit/ir/ir.h>
 

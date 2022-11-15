@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ir_all_nodes.h"
-#include "type.h"
+#include <ir_all_nodes.h>
+#include <type.h>
 
 #include <iterator>
 #include <unordered_map>

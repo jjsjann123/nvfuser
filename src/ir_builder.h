@@ -1,8 +1,8 @@
 #pragma once
 
-#include "fusion.h"
-#include "ir_all_nodes.h"
-#include "ir_container.h"
+#include <fusion.h>
+#include <ir_all_nodes.h>
+#include <ir_container.h>
 
 namespace torch {
 namespace jit {

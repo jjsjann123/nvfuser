@@ -2,8 +2,8 @@
 
 #include <ATen/core/ivalue.h>
 
-#include "fusion.h"
-#include "mma_type.h"
+#include <fusion.h>
+#include <mma_type.h>
 
 namespace torch {
 namespace jit {

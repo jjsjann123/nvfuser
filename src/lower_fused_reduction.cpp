@@ -1,9 +1,9 @@
-#include "ir_utils.h"
-#include "iter_visitor.h"
-#include "kernel_ir_dispatch.h"
-#include "lower2device.h"
+#include <ir_utils.h>
+#include <iter_visitor.h>
+#include <kernel_ir_dispatch.h>
+#include <lower2device.h>
 
-#include "lower_fused_reduction.h"
+#include <lower_fused_reduction.h>
 
 #include <algorithm>
 

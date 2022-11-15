@@ -2,26 +2,26 @@
 
 #include <c10/macros/Export.h>
 
-#include "compute_at_map.h"
-#include "ir_all_nodes.h"
-#include "kernel.h"
-#include "kernel_ir.h"
-#include "lower_allocation.h"
-#include "lower_double_buffer.h"
-#include "lower_fused_reduction.h"
-#include "lower_index_hoist.h"
-#include "lower_predicate.h"
-#include "lower_predicate_elimination.h"
-#include "lower_shift.h"
-#include "lower_sync_information.h"
-#include "lower_thread_predicate.h"
-#include "lower_trivial_broadcast.h"
-#include "lower_warp_reduce.h"
-#include "non_divisible_split.h"
-#include "parallel_dimension_map.h"
-#include "partial_split_map.h"
-#include "root_domain_map.h"
-#include "vectorization_info.h"
+#include <compute_at_map.h>
+#include <ir_all_nodes.h>
+#include <kernel.h>
+#include <kernel_ir.h>
+#include <lower_allocation.h>
+#include <lower_double_buffer.h>
+#include <lower_fused_reduction.h>
+#include <lower_index_hoist.h>
+#include <lower_predicate.h>
+#include <lower_predicate_elimination.h>
+#include <lower_shift.h>
+#include <lower_sync_information.h>
+#include <lower_thread_predicate.h>
+#include <lower_trivial_broadcast.h>
+#include <lower_warp_reduce.h>
+#include <non_divisible_split.h>
+#include <parallel_dimension_map.h>
+#include <partial_split_map.h>
+#include <root_domain_map.h>
+#include <vectorization_info.h>
 
 #include <memory>
 #include <ostream>

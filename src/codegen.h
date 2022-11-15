@@ -1,7 +1,7 @@
 #pragma once
 
 #include <c10/macros/Export.h>
-#include "kernel.h"
+#include <kernel.h>
 
 #include <string>
 

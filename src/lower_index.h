@@ -2,10 +2,10 @@
 
 #include <c10/macros/Export.h>
 
-#include "instrumentation.h"
-#include "kernel_ir.h"
-#include "kernel_ir_dispatch.h"
-#include "root_domain_map.h"
+#include <instrumentation.h>
+#include <kernel_ir.h>
+#include <kernel_ir_dispatch.h>
+#include <root_domain_map.h>
 
 #include <vector>
 

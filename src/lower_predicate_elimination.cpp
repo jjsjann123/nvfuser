@@ -1,15 +1,15 @@
-#include "lower_predicate_elimination.h"
+#include <lower_predicate_elimination.h>
 
-#include "arith.h"
-#include "instrumentation.h"
-#include "ir_iostream.h"
-#include "ir_utils.h"
-#include "lower2device.h"
-#include "lower_shift.h"
-#include "lower_utils.h"
-#include "predicate_compute.h"
-#include "transform_iter.h"
-#include "transform_replay.h"
+#include <arith.h>
+#include <instrumentation.h>
+#include <ir_iostream.h>
+#include <ir_utils.h>
+#include <lower2device.h>
+#include <lower_shift.h>
+#include <lower_utils.h>
+#include <predicate_compute.h>
+#include <transform_iter.h>
+#include <transform_replay.h>
 
 namespace torch {
 namespace jit {

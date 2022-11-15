@@ -1,9 +1,9 @@
 #pragma once
 
-#include "fusion.h"
-#include "scheduler/all_schedulers.h"
-#include "scheduler/pointwise_utils.h"
-#include "scheduler/utils.h"
+#include <fusion.h>
+#include <scheduler/all_schedulers.h>
+#include <scheduler/pointwise_utils.h>
+#include <scheduler/utils.h>
 
 namespace torch {
 namespace jit {

@@ -2,8 +2,8 @@
 
 #include <c10/macros/Export.h>
 
-#include "dispatch.h"
-#include "ir_base_nodes.h"
+#include <dispatch.h>
+#include <ir_base_nodes.h>
 
 #include <unordered_map>
 

@@ -1,9 +1,9 @@
-#include "ir_builder.h"
-#include "ir_utils.h"
-#include "root_domain_map.h"
-#include "transform_iter.h"
+#include <ir_builder.h>
+#include <ir_utils.h>
+#include <root_domain_map.h>
+#include <transform_iter.h>
 
-#include "grouped_reduction.h"
+#include <grouped_reduction.h>
 
 namespace torch {
 namespace jit {

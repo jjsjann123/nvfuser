@@ -1,9 +1,9 @@
-#include "iter_visitor.h"
-#include "kernel_ir_dispatch.h"
-#include "lower2device.h"
-#include "lower_magic_zero.h"
+#include <iter_visitor.h>
+#include <kernel_ir_dispatch.h>
+#include <lower2device.h>
+#include <lower_magic_zero.h>
 
-#include "lower_index_hoist.h"
+#include <lower_index_hoist.h>
 
 namespace torch {
 namespace jit {

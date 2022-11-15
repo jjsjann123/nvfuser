@@ -2,8 +2,8 @@
 
 #include <c10/macros/Export.h>
 
-#include "ir_all_nodes.h"
-#include "kernel_ir.h"
+#include <ir_all_nodes.h>
+#include <kernel_ir.h>
 
 #include <vector>
 

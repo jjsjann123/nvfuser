@@ -1,9 +1,9 @@
 #pragma once
 
-#include "dynamic_type.h"
-#include "executor_launch_params.h"
-#include "ir_base_nodes.h"
-#include "kernel.h"
+#include <dynamic_type.h>
+#include <executor_launch_params.h>
+#include <ir_base_nodes.h>
+#include <kernel.h>
 
 #include <unordered_map>
 #include <utility>

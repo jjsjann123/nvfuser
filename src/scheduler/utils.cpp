@@ -1,14 +1,14 @@
-#include "scheduler/registry.h"
-#include "scheduler/utils.h"
-#include "scheduler/vectorize_helper.h"
+#include <scheduler/registry.h>
+#include <scheduler/utils.h>
+#include <scheduler/vectorize_helper.h>
 
-#include "contiguity.h"
-#include "expr_evaluator.h"
-#include "instrumentation.h"
-#include "ir_utils.h"
-#include "root_domain_map.h"
-#include "scheduler/mma_utils.h"
-#include "transform_replay.h"
+#include <contiguity.h>
+#include <expr_evaluator.h>
+#include <instrumentation.h>
+#include <ir_utils.h>
+#include <root_domain_map.h>
+#include <scheduler/mma_utils.h>
+#include <transform_replay.h>
 
 #include <algorithm>
 

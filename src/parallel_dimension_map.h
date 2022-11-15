@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ir_all_nodes.h"
-#include "kernel_ir.h"
+#include <ir_all_nodes.h>
+#include <kernel_ir.h>
 
 #include <deque>
 #include <unordered_map>

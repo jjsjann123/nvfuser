@@ -1,16 +1,16 @@
 #include <c10/util/irange.h>
-#include "disjoint_set.h"
-#include "executor_utils.h"
-#include "expr_evaluator.h"
-#include "instrumentation.h"
-#include "ir_iostream.h"
-#include "ir_utils.h"
-#include "root_domain_map.h"
-#include "scheduler/debug_utils.h"
-#include "scheduler/pointwise.h"
-#include "scheduler/registry.h"
-#include "scheduler/transpose.h"
-#include "scheduler/utils.h"
+#include <disjoint_set.h>
+#include <executor_utils.h>
+#include <expr_evaluator.h>
+#include <instrumentation.h>
+#include <ir_iostream.h>
+#include <ir_utils.h>
+#include <root_domain_map.h>
+#include <scheduler/debug_utils.h>
+#include <scheduler/pointwise.h>
+#include <scheduler/registry.h>
+#include <scheduler/transpose.h>
+#include <scheduler/utils.h>
 
 #include <limits>
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "kernel_ir.h"
+#include <kernel_ir.h>
 
 namespace torch {
 namespace jit {

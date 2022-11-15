@@ -1,12 +1,12 @@
-#include "lower_alias_memory.h"
+#include <lower_alias_memory.h>
 
-#include "expr_evaluator.h"
-#include "instrumentation.h"
-#include "ir_iostream.h"
-#include "ir_utils.h"
-#include "kernel_ir.h"
-#include "lower2device.h"
-#include "lower_utils.h"
+#include <expr_evaluator.h>
+#include <instrumentation.h>
+#include <ir_iostream.h>
+#include <ir_utils.h>
+#include <kernel_ir.h>
+#include <lower2device.h>
+#include <lower_utils.h>
 
 #include <sstream>
 #include <unordered_map>

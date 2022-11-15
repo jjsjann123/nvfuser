@@ -2,8 +2,8 @@
 
 #include <ATen/core/ivalue.h>
 
-#include "fusion.h"
-#include "scheduler/transpose_heuristic.h"
+#include <fusion.h>
+#include <scheduler/transpose_heuristic.h>
 
 #define SUPPORT_SPLITTING_INNERMOST_DIM 0
 

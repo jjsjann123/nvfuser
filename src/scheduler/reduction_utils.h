@@ -1,8 +1,8 @@
 #pragma once
 
-#include "fusion.h"
-#include "ir_all_nodes.h"
-#include "scheduler/reduction_heuristic.h"
+#include <fusion.h>
+#include <ir_all_nodes.h>
+#include <scheduler/reduction_heuristic.h>
 
 namespace torch {
 namespace jit {

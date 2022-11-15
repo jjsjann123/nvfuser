@@ -5,8 +5,8 @@
 #include <c10/util/Exception.h>
 #include <c10/util/Optional.h>
 
-#include "type.h"
-#include "utils.h"
+#include <type.h>
+#include <utils.h>
 
 #include <cstdint>
 #include <iostream>

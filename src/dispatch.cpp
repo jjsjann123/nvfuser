@@ -1,8 +1,8 @@
-#include "fusion.h"
-#include "ir_all_nodes.h"
-#include "type.h"
+#include <fusion.h>
+#include <ir_all_nodes.h>
+#include <type.h>
 
-#include "dispatch.h"
+#include <dispatch.h>
 
 namespace torch {
 namespace jit {

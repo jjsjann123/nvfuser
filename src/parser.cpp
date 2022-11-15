@@ -1,14 +1,14 @@
-#include "parser.h"
+#include <parser.h>
 
-#include "arith.h"
-#include "instrumentation.h"
-#include "ir_all_nodes.h"
-#include "ir_builder.h"
-#include "ir_iostream.h"
-#include "ops/all_ops.h"
-#include "type_inference.h"
-#include "type_promotion.h"
-#include "utils.h"
+#include <arith.h>
+#include <instrumentation.h>
+#include <ir_all_nodes.h>
+#include <ir_builder.h>
+#include <ir_iostream.h>
+#include <ops/all_ops.h>
+#include <type_inference.h>
+#include <type_promotion.h>
+#include <utils.h>
 
 #include <torch/csrc/jit/frontend/function_schema_parser.h>
 #include <torch/csrc/jit/ir/constants.h>

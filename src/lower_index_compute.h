@@ -1,7 +1,7 @@
 #pragma once
 
-#include "fusion.h"
-#include "index_compute.h"
+#include <fusion.h>
+#include <index_compute.h>
 
 namespace torch {
 namespace jit {

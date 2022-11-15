@@ -1,11 +1,11 @@
-#include "dispatch.h"
-#include "instrumentation.h"
-#include "ir_utils.h"
-#include "kernel_ir.h"
-#include "kernel_ir_dispatch.h"
-#include "lower2device.h"
-#include "lower_insert_syncs.h"
-#include "lower_utils.h"
+#include <dispatch.h>
+#include <instrumentation.h>
+#include <ir_utils.h>
+#include <kernel_ir.h>
+#include <kernel_ir_dispatch.h>
+#include <lower2device.h>
+#include <lower_insert_syncs.h>
+#include <lower_utils.h>
 
 #include <unordered_set>
 

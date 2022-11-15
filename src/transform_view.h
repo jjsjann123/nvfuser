@@ -2,7 +2,7 @@
 
 #include <c10/macros/Export.h>
 
-#include "ir_all_nodes.h"
+#include <ir_all_nodes.h>
 
 #include <memory>
 #include <vector>

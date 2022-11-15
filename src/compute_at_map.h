@@ -1,9 +1,9 @@
 #pragma once
 
-#include "disjoint_set.h"
-#include "ir_all_nodes.h"
-#include "kernel_ir.h"
-#include "lower_trivial_broadcast.h"
+#include <disjoint_set.h>
+#include <ir_all_nodes.h>
+#include <kernel_ir.h>
+#include <lower_trivial_broadcast.h>
 
 #include <deque>
 #include <unordered_map>

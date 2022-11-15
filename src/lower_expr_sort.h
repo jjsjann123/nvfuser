@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ir_base_nodes.h"
+#include <ir_base_nodes.h>
 
 namespace torch {
 namespace jit {

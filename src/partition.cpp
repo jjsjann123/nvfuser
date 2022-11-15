@@ -1,11 +1,11 @@
-#include "partition.h"
+#include <partition.h>
 
 #include <ATen/core/jit_type.h>
 #include <ATen/cuda/CUDAContext.h>
 #include <c10/util/irange.h>
-#include "instrumentation.h"
-#include "parser.h"
-#include "utils.h"
+#include <instrumentation.h>
+#include <parser.h>
+#include <utils.h>
 #include <torch/csrc/jit/jit_log.h>
 
 namespace torch {

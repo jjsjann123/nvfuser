@@ -1,11 +1,11 @@
-#include "lower_magic_zero.h"
+#include <lower_magic_zero.h>
 
-#include "dispatch.h"
-#include "instrumentation.h"
-#include "ir_utils.h"
-#include "kernel_ir_dispatch.h"
-#include "lower2device.h"
-#include "lower_index_compute.h"
+#include <dispatch.h>
+#include <instrumentation.h>
+#include <ir_utils.h>
+#include <kernel_ir_dispatch.h>
+#include <lower2device.h>
+#include <lower_index_compute.h>
 
 namespace torch {
 namespace jit {

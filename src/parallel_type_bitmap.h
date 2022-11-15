@@ -1,7 +1,7 @@
 #pragma once
 
 #include <c10/macros/Export.h>
-#include "type.h"
+#include <type.h>
 
 #include <array>
 #include <bitset>

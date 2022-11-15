@@ -1,10 +1,10 @@
 
-#include "instrumentation.h"
-#include "ir_utils.h"
-#include "lower2device.h"
-#include "lower_index_compute.h"
+#include <instrumentation.h>
+#include <ir_utils.h>
+#include <lower2device.h>
+#include <lower_index_compute.h>
 
-#include "lower_sync_information.h"
+#include <lower_sync_information.h>
 
 namespace torch {
 namespace jit {

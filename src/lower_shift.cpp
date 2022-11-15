@@ -1,14 +1,14 @@
-#include "arith.h"
-#include "expr_evaluator.h"
-#include "index_compute.h"
-#include "instrumentation.h"
-#include "ir_iostream.h"
-#include "ir_utils.h"
-#include "kernel_ir.h"
-#include "lower2device.h"
-#include "lower_index_compute.h"
-#include "lower_shift.h"
-#include "lower_utils.h"
+#include <arith.h>
+#include <expr_evaluator.h>
+#include <index_compute.h>
+#include <instrumentation.h>
+#include <ir_iostream.h>
+#include <ir_utils.h>
+#include <kernel_ir.h>
+#include <lower2device.h>
+#include <lower_index_compute.h>
+#include <lower_shift.h>
+#include <lower_utils.h>
 
 #include <functional>
 

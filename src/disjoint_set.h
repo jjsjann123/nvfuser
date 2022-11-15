@@ -9,7 +9,7 @@
 #include <vector>
 
 // For printing of the set when using a Statement as the type for the set
-#include "ir_base_nodes.h"
+#include <ir_base_nodes.h>
 
 namespace torch {
 namespace jit {

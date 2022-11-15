@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ir_all_nodes.h"
+#include <ir_all_nodes.h>
 
 #include <functional>
 #include <unordered_map>

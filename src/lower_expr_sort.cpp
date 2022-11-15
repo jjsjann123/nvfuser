@@ -1,12 +1,12 @@
-#include "compute_at_map.h"
-#include "fusion.h"
-#include "instrumentation.h"
-#include "ir_all_nodes.h"
-#include "ir_iostream.h"
-#include "ir_utils.h"
-#include "lower2device.h"
-#include "lower_expr_sort.h"
-#include "lower_utils.h"
+#include <compute_at_map.h>
+#include <fusion.h>
+#include <instrumentation.h>
+#include <ir_all_nodes.h>
+#include <ir_iostream.h>
+#include <ir_utils.h>
+#include <lower2device.h>
+#include <lower_expr_sort.h>
+#include <lower_utils.h>
 
 #include <deque>
 #include <list>

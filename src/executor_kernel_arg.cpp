@@ -1,9 +1,9 @@
 #include <c10/util/irange.h>
 
 // Extract size and strides
-#include "kernel_cache.h"
+#include <kernel_cache.h>
 
-#include "executor_kernel_arg.h"
+#include <executor_kernel_arg.h>
 
 namespace torch {
 namespace jit {

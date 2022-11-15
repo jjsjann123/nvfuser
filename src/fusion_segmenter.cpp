@@ -1,13 +1,13 @@
-#include "arith.h"
-#include "fusion.h"
-#include "fusion_segmenter.h"
-#include "instrumentation.h"
-#include "ir_all_nodes.h"
-#include "ir_cloner.h"
-#include "ir_graphviz.h"
-#include "ir_iostream.h"
-#include "ir_utils.h"
-#include "scheduler/debug_utils.h"
+#include <arith.h>
+#include <fusion.h>
+#include <fusion_segmenter.h>
+#include <instrumentation.h>
+#include <ir_all_nodes.h>
+#include <ir_cloner.h>
+#include <ir_graphviz.h>
+#include <ir_iostream.h>
+#include <ir_utils.h>
+#include <scheduler/debug_utils.h>
 
 #include <sstream>
 

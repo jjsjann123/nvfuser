@@ -1,8 +1,8 @@
 #pragma once
 
-#include "fusion.h"
-#include "ir_all_nodes.h"
-#include "scheduler/registry.h"
+#include <fusion.h>
+#include <ir_all_nodes.h>
+#include <scheduler/registry.h>
 
 #include <vector>
 

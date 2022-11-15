@@ -1,5 +1,5 @@
-#include "kernel_ir.h"
-#include "kernel_ir_dispatch.h"
+#include <kernel_ir.h>
+#include <kernel_ir_dispatch.h>
 
 namespace torch {
 namespace jit {

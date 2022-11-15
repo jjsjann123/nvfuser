@@ -1,8 +1,8 @@
 #pragma once
 #include <c10/macros/Export.h>
 
-#include "kernel_cache.h"
-#include "python_frontend/fusion_record.h"
+#include <kernel_cache.h>
+#include <python_frontend/fusion_record.h>
 
 #include <memory>
 

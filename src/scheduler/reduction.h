@@ -2,8 +2,8 @@
 
 #include <ATen/core/ivalue.h>
 
-#include "fusion.h"
-#include "scheduler/reduction_heuristic.h"
+#include <fusion.h>
+#include <scheduler/reduction_heuristic.h>
 
 namespace torch {
 namespace jit {

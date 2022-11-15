@@ -1,8 +1,8 @@
-#include "ir_builder.h"
-#include "kernel_ir_dispatch.h"
-#include "lower_utils.h"
+#include <ir_builder.h>
+#include <kernel_ir_dispatch.h>
+#include <lower_utils.h>
 
-#include "lower_fusion_simplifier.h"
+#include <lower_fusion_simplifier.h>
 
 namespace torch {
 namespace jit {

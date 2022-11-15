@@ -1,10 +1,10 @@
-#include "compute_at_map.h"
+#include <compute_at_map.h>
 
-#include "disjoint_set.h"
-#include "ir_utils.h"
-#include "lower2device.h"
-#include "root_domain_map.h"
-#include "transform_iter.h"
+#include <disjoint_set.h>
+#include <ir_utils.h>
+#include <lower2device.h>
+#include <root_domain_map.h>
+#include <transform_iter.h>
 
 #include <tuple>
 

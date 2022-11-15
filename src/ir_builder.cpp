@@ -1,7 +1,7 @@
-#include "fusion.h"
-#include "ir_builder.h"
-#include "ir_cloner.h"
-#include "kernel.h"
+#include <fusion.h>
+#include <ir_builder.h>
+#include <ir_cloner.h>
+#include <kernel.h>
 
 namespace torch {
 namespace jit {

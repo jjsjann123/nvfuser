@@ -1,12 +1,12 @@
-#include "contiguity.h"
-#include "index_compute.h"
-#include "ir_utils.h"
-#include "lower2device.h"
-#include "lower_index_compute.h"
-#include "lower_magic_zero.h"
-#include "lower_utils.h"
-#include "lower_validation.h"
-#include "transform_iter.h"
+#include <contiguity.h>
+#include <index_compute.h>
+#include <ir_utils.h>
+#include <lower2device.h>
+#include <lower_index_compute.h>
+#include <lower_magic_zero.h>
+#include <lower_utils.h>
+#include <lower_validation.h>
+#include <transform_iter.h>
 
 namespace torch {
 namespace jit {

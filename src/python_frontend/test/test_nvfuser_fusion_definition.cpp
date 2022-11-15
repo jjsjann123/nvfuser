@@ -4,11 +4,11 @@
 
 #include <torch/torch.h>
 
-#include "python_frontend/fusion_definition.h"
-#include "python_frontend/fusion_interface.h"
-#include "python_frontend/fusion_record.h"
-#include "test/test_gpu_validator.h"
-#include "test/test_utils.h"
+#include <python_frontend/fusion_definition.h>
+#include <python_frontend/fusion_interface.h>
+#include <python_frontend/fusion_record.h>
+#include <test/test_gpu_validator.h>
+#include <test/test_utils.h>
 
 // Tests go in torch::jit
 namespace torch {

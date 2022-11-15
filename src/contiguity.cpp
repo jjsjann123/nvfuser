@@ -1,8 +1,8 @@
-#include "ir_utils.h"
-#include "iter_visitor.h"
-#include "lower2device.h"
+#include <ir_utils.h>
+#include <iter_visitor.h>
+#include <lower2device.h>
 
-#include "contiguity.h"
+#include <contiguity.h>
 
 namespace torch {
 namespace jit {

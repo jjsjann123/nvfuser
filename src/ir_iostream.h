@@ -2,7 +2,7 @@
 
 #include <c10/macros/Export.h>
 
-#include "dispatch.h"
+#include <dispatch.h>
 
 #include <c10/util/irange.h>
 

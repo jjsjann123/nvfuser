@@ -1,8 +1,8 @@
 #pragma once
-#include "scheduler/normalization.h"
-#include "scheduler/pointwise.h"
-#include "scheduler/reduction.h"
-#include "scheduler/transpose.h"
+#include <scheduler/normalization.h>
+#include <scheduler/pointwise.h>
+#include <scheduler/reduction.h>
+#include <scheduler/transpose.h>
 
 namespace torch {
 namespace jit {

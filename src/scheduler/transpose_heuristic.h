@@ -1,8 +1,8 @@
 #pragma once
 
 #include <c10/util/hash.h>
-#include "scheduler/heuristic.h"
-#include "utils.h"
+#include <scheduler/heuristic.h>
+#include <utils.h>
 
 #include <sstream>
 

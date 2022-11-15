@@ -1,11 +1,11 @@
-#include "compute_at.h"
-#include "instrumentation.h"
-#include "ir_all_nodes.h"
-#include "ir_iostream.h"
-#include "ir_utils.h"
-#include "lower_utils.h"
-#include "root_domain_map.h"
-#include "transform_iter.h"
+#include <compute_at.h>
+#include <instrumentation.h>
+#include <ir_all_nodes.h>
+#include <ir_iostream.h>
+#include <ir_utils.h>
+#include <lower_utils.h>
+#include <root_domain_map.h>
+#include <transform_iter.h>
 
 #include <c10/util/irange.h>
 

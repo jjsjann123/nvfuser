@@ -1,8 +1,8 @@
 #pragma once
 
 #include <c10/macros/Export.h>
-#include "dispatch.h"
-#include "ir_builder.h"
+#include <dispatch.h>
+#include <ir_builder.h>
 
 #include <unordered_map>
 #include <vector>

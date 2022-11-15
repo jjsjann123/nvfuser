@@ -1,15 +1,15 @@
-#include "lower_utils.h"
+#include <lower_utils.h>
 
 #include <ATen/cuda/CUDAContext.h>
 #include <c10/util/irange.h>
-#include "arith.h"
-#include "ir_iostream.h"
-#include "ir_utils.h"
-#include "iter_visitor.h"
-#include "kernel_ir_dispatch.h"
-#include "lower2device.h"
-#include "lower_thread_predicate.h"
-#include "root_domain_map.h"
+#include <arith.h>
+#include <ir_iostream.h>
+#include <ir_utils.h>
+#include <iter_visitor.h>
+#include <kernel_ir_dispatch.h>
+#include <lower2device.h>
+#include <lower_thread_predicate.h>
+#include <root_domain_map.h>
 
 #include <algorithm>
 
