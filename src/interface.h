@@ -1,7 +1,8 @@
 #pragma once
+#include "transform_view.h"
+#include "manager.h"
 
 #include <c10/macros/Export.h>
-#include "transform_view.h"
 #include <torch/csrc/jit/ir/ir.h>
 #include <torch/csrc/jit/passes/pass_manager.h>
 #include <torch/csrc/jit/runtime/profiling_record.h>
@@ -23,7 +24,7 @@ struct TORCH_API NVFuserPassManager : public PassManager<NVFuserPassManager> {
   static bool registerPass(bool enabled) {
     bool old_value = PassManager::isRegistered();
     if (enabled) {
-      PassManager::registerPass(fuseGraph);
+      PassManager::registerPass(CudaFuseGraph);
     } else {
       PassManager::clearPass();
     }
