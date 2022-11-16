@@ -235,7 +235,10 @@ endif()
 add_executable(tests ${NVFUSER_ROOT}/test/main.cpp ${JIT_TEST_SRCS})
 
 target_compile_definitions(tests PRIVATE USE_GTEST)
+target_compile_definitions(tests PRIVATE USE_CUDA)
 target_link_libraries(tests PRIVATE ${TORCH_LIBRARIES} ${PROJECT_NAME} gtest_main)
+
+install(TARGETS test_jit DESTINATION bin)
 
 # --- installation
 
