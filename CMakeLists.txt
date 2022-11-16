@@ -215,9 +215,9 @@ target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_BINARY_DIR}/include"
 add_subdirectory(${NVFUSER_ROOT}/third_party/googletest)
 
 set(JIT_TEST_SRCS)
-# list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_nvfuser_fusion_definition.cpp)
-# list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_nvfuser_fusion_cache.cpp)
-# list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_nvfuser_fusion_record.cpp)
+list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_nvfuser_fusion_definition.cpp)
+list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_nvfuser_fusion_cache.cpp)
+list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_nvfuser_fusion_record.cpp)
 list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_gpu1.cpp)
 list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_gpu2.cpp)
 list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_gpu3.cpp)
