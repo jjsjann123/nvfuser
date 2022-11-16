@@ -129,14 +129,14 @@ list(APPEND NVFUSER_SRCS
     ${NVFUSER_SRCS_DIR}/scheduler/mma_utils.cpp
 )
 
-
-# add_executable(${PROJECT_NAME} toy.cpp)
 add_library(${PROJECT_NAME} ${NVFUSER_SRCS})
 
 target_link_libraries(${PROJECT_NAME} PRIVATE ${TORCH_LIBRARIES} ${CUDA_NVRTC_LIB})
 target_compile_options(${PROJECT_NAME} PRIVATE ${OpenMP_CXX_OPTIONS})
 target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenMP_CXX_LIBRARIES})
-target_include_directories(${PROJECT_NAME} PRIVATE ${NVFUSER_SRCS_DIR} ${CUDA_INCLUDE_DIRS})
+target_include_directories(${PROJECT_NAME}
+	                   PUBLIC $<BUILD_INTERFACE:${NVFUSER_SRCS_DIR}>
+                           PRIVATE ${CUDA_INCLUDE_DIRS})
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
 
 # --- generate runtime files
@@ -209,3 +209,10 @@ foreach(src ${NVFUSER_RUNTIME_FILES})
 endforeach()
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_BINARY_DIR}/include")
+
+# --- installation
+
+# exporting library for find_package
+export(TARGETS
+       ${PROJECT_NAME}
+       FILE "${CMAKE_BINARY_DIR}/${PROJECT_NAME}Config.cmake")
