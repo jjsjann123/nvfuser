@@ -210,6 +210,33 @@ endforeach()
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_BINARY_DIR}/include")
 
+# -- tests
+add_subdirectory(${NVFUSER_ROOT}/third_party/googletest)
+
+set(JIT_TEST_SRCS)
+if(USE_CUDA)
+  list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_nvfuser_fusion_definition.cpp)
+  list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_nvfuser_fusion_cache.cpp)
+  list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_nvfuser_fusion_record.cpp)
+  list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_gpu1.cpp)
+  list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_gpu2.cpp)
+  list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_gpu3.cpp)
+  list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_gpu_swizzle.cpp)
+  list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_gpu_tensor_factories.cpp)
+  list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_gpu_fused_reduction.cpp)
+  list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_gpu_shift.cpp)
+  list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_gpu_tensorcore.cpp)
+  list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_gpu_view.cpp)
+  list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_gpu_transpose.cpp)
+  list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_gpu_rng.cu)
+  list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_gpu_utils.cpp)
+endif()
+
+add_executable(tests ${NVFUSER_ROOT}/test/main.cpp ${JIT_TEST_SRCS})
+
+target_compile_definitions(tests PRIVATE USE_GTEST)
+target_link_libraries(tests PRIVATE ${TORCH_LIBRARIES} ${PROJECT_NAME} gtest_main)
+
 # --- installation
 
 # exporting library for find_package
