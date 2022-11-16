@@ -127,6 +127,7 @@ list(APPEND NVFUSER_SRCS
     ${NVFUSER_SRCS_DIR}/utils.cpp
     ${NVFUSER_SRCS_DIR}/mma_type.cpp
     ${NVFUSER_SRCS_DIR}/scheduler/mma_utils.cpp
+    ${NVFUSER_SRCS_DIR}/interface.cpp
 )
 
 add_library(${PROJECT_NAME} ${NVFUSER_SRCS})

@@ -20,6 +20,10 @@ namespace jit {
 namespace fuser {
 namespace cuda {
 
+TORCH_API bool complyWith(
+    const at::Tensor& tensor,
+    const c10::TensorTypePtr& guard_tensor_type);
+
 struct TORCH_API NVFuserPassManager : public PassManager<NVFuserPassManager> {
   static bool registerPass(bool enabled) {
     bool old_value = PassManager::isRegistered();

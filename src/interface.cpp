@@ -8,6 +8,12 @@
 #include <transform_view.h>
 #include <torch/csrc/jit/runtime/custom_operator.h>
 #include <torch/csrc/jit/runtime/register_ops_utils.h>
+#include <torch/csrc/jit/codegen/cuda/interface.h>
+
+namespace torch {
+namespace jit {
+namespace fuser {
+namespace cuda {
 
 //! [ Note -- type guard logic in CudaFusionGuard ]
 //!
@@ -385,7 +391,7 @@ RegisterOperators view_guard({
                 tensor_constraints.vec();
             // auto new_constraints = fuser::cuda::getViewConstraint(
             //     tensor_sizes_int_vec, view_sizes_int_vec);
-            auto new_constraints = analyzeViewConstraint(
+            auto new_constraints = torch::jit::fuser::cuda::analyzeViewConstraint(
                  tensor_sizes_int_vec, view_sizes_int_vec);
             bool guard_status =
                 (new_constraints.conglomerateString() == previous_constraints);

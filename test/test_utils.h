@@ -332,6 +332,12 @@ struct TransformPropagatorWithCheck : public TransformPropagator {
 
 } // namespace
 
+inline Stack createStack(std::vector<at::Tensor>&& list) {
+  return Stack(
+      std::make_move_iterator(list.begin()),
+      std::make_move_iterator(list.end()));
+}
+
 class ContextCudnnTF32Disabled {
  public:
   ContextCudnnTF32Disabled() {
