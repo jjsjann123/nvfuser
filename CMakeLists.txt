@@ -234,9 +234,10 @@ add_executable(tests ${NVFUSER_ROOT}/test/main.cpp ${JIT_TEST_SRCS})
 
 target_compile_definitions(tests PRIVATE USE_GTEST)
 target_compile_definitions(tests PRIVATE USE_CUDA)
+target_include_directories(tests PRIVATE "${NVFUSER_ROOT}")
 target_link_libraries(tests PRIVATE ${TORCH_LIBRARIES} ${PROJECT_NAME} gtest_main gmock_main)
 
-install(TARGETS test_jit DESTINATION bin)
+install(TARGETS tests DESTINATION bin)
 
 # --- installation
 

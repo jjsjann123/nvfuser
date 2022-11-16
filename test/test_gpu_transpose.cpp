@@ -2,15 +2,15 @@
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
 
-#include "executor.h"
-#include "inlining.h"
-#include "kernel_cache.h"
-#include "ops/all_ops.h"
-#include "scheduler/all_schedulers.h"
-#include "scheduler/transpose.h"
-#include "scheduler/utils.h"
-#include "test/test_gpu_validator.h"
-#include "test/test_utils.h"
+#include <executor.h>
+#include <inlining.h>
+#include <kernel_cache.h>
+#include <ops/all_ops.h>
+#include <scheduler/all_schedulers.h>
+#include <scheduler/transpose.h>
+#include <scheduler/utils.h>
+#include <test/test_gpu_validator.h>
+#include <test/test_utils.h>
 
 // Tests go in torch::jit
 namespace torch {

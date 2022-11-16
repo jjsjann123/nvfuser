@@ -2,15 +2,15 @@
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
 
-#include "codegen.h"
-#include "executor.h"
-#include "fusion.h"
-#include "ir_all_nodes.h"
-#include "ir_iostream.h"
-#include "kernel_cache.h"
-#include "ops/all_ops.h"
-#include "test/test_gpu_validator.h"
-#include "test/test_utils.h"
+#include <codegen.h>
+#include <executor.h>
+#include <fusion.h>
+#include <ir_all_nodes.h>
+#include <ir_iostream.h>
+#include <kernel_cache.h>
+#include <ops/all_ops.h>
+#include <test/test_gpu_validator.h>
+#include <test/test_utils.h>
 
 // Tests go in torch::jit
 namespace torch {
