@@ -155,11 +155,12 @@ set(NVFUSER_PYTHON ${PROJECT_NAME})
 
 set(NVFUSER_PYTHON_SRCS)
 list(APPEND NVFUSER_PYTHON_SRCS
-	#${NVFUSER_SRCS_DIR}/python_frontend/python_bindings.cpp
-    ${NVFUSER_SRCS_DIR}/python_frontend/python_bindings_test.cpp
+    ${NVFUSER_SRCS_DIR}/python_frontend/python_bindings.cpp
+    ${NVFUSER_SRCS_DIR}/python_frontend/python_bindings_register.cpp
 )
 
 pybind11_add_module(${NVFUSER_PYTHON} ${NVFUSER_PYTHON_SRCS})
+target_link_libraries(${NVFUSER_PYTHON} PRIVATE ${TORCH_LIBRARIES} ${NVFUSER_CODEGEN})
 
 # --- generate runtime files
 
