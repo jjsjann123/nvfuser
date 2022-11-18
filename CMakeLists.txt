@@ -19,7 +19,7 @@ set(PYTHON_EXECUTABLE "${_Python_EXECUTABLE}")
 
 # --- dependencies
 find_package(Torch REQUIRED)
-find_package(TORCH_PYTHON_LIBRARY REQUIRED)
+find_library(TORCH_PYTHON_LIBRARY torch_python)
 find_package(OpenMP REQUIRED)
 find_package(PythonLibs REQUIRED)
 
