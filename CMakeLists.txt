@@ -133,7 +133,6 @@ list(APPEND NVFUSER_SRCS
     ${NVFUSER_SRCS_DIR}/mma_type.cpp
     ${NVFUSER_SRCS_DIR}/scheduler/mma_utils.cpp
     ${NVFUSER_SRCS_DIR}/interface.cpp
-    ${NVFUSER_SRCS_DIR}/python_frontend/python_bindings.cpp
 )
 
 set(NVFUSER_CODEGEN ${PROJECT_NAME}_codegen)
@@ -160,7 +159,7 @@ list(APPEND NVFUSER_PYTHON_SRCS
 )
 
 pybind11_add_module(${NVFUSER_PYTHON} ${NVFUSER_PYTHON_SRCS})
-target_link_libraries(${NVFUSER_PYTHON} PRIVATE ${TORCH_LIBRARIES} ${NVFUSER_CODEGEN})
+target_link_libraries(${NVFUSER_PYTHON} PRIVATE ${TORCH_LIBRARIES} ${NVFUSER_CODEGEN} ${TORCH_PYTHON_LIBRARY})
 
 # --- generate runtime files
 

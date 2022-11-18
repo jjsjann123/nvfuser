@@ -3,5 +3,5 @@
 
 PYBIND11_MODULE(nvfuser, m) {
     m.doc() = "nvfuser python API"; // optional module docstring
-    initNvFuserPythonBindings(m);
+    torch::jit::initNvFuserPythonBindings(m.ptr());
 }
