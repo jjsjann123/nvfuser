@@ -19,7 +19,9 @@ set(PYTHON_EXECUTABLE "${_Python_EXECUTABLE}")
 
 # --- dependencies
 find_package(Torch REQUIRED)
+find_package(TORCH_PYTHON_LIBRARY REQUIRED)
 find_package(OpenMP REQUIRED)
+find_package(PythonLibs REQUIRED)
 
 # --- project
 
@@ -128,16 +130,19 @@ list(APPEND NVFUSER_SRCS
     ${NVFUSER_SRCS_DIR}/mma_type.cpp
     ${NVFUSER_SRCS_DIR}/scheduler/mma_utils.cpp
     ${NVFUSER_SRCS_DIR}/interface.cpp
+    ${NVFUSER_SRCS_DIR}/python_frontend/python_bindings.cpp
 )
 
-add_library(${PROJECT_NAME} ${NVFUSER_SRCS})
-
-target_link_libraries(${PROJECT_NAME} PRIVATE ${TORCH_LIBRARIES} ${CUDA_NVRTC_LIB})
+add_library(${PROJECT_NAME} SHARED ${NVFUSER_SRCS})
+# not sure why I needed these
 target_compile_options(${PROJECT_NAME} PRIVATE ${OpenMP_CXX_OPTIONS})
 target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenMP_CXX_LIBRARIES})
+
+target_link_libraries(${PROJECT_NAME} PRIVATE ${TORCH_LIBRARIES} ${CUDA_NVRTC_LIB} ${PYTHON_LIBRARIES} ${TORCH_PYTHON_LIBRARY})
 target_include_directories(${PROJECT_NAME}
 	                   PUBLIC $<BUILD_INTERFACE:${NVFUSER_SRCS_DIR}>
-                           PRIVATE ${CUDA_INCLUDE_DIRS})
+                           PRIVATE ${CUDA_INCLUDE_DIRS}
+			   PRIVATE ${PYTHON_INCLUDE_DIRS})
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
 
 # --- generate runtime files
