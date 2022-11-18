@@ -4,6 +4,9 @@ project(nvfuser)
 # ---
 set(NVFUSER_ROOT ${PROJECT_SOURCE_DIR})
 
+add_subdirectory(${NVFUSER_ROOT}/third_party/pybind11)
+add_subdirectory(${NVFUSER_ROOT}/third_party/googletest)
+
 # --- hacky variables
 find_package(Python REQUIRED)
 set(MKL_THREADING CACHE STRING "gnu_thread")
@@ -146,11 +149,9 @@ target_include_directories(${PROJECT_NAME}
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
 
 # --- pybind11
-add_subdirectory(${NVFUSER_ROOT}/third_party/pybind11)
-
 set(NVFUSER_PYTHON_SRCS)
 list(APPEND NVFUSER_PYTHON_SRCS
-	#${NVFUSER_SRCS_DIR}/python_frontend/python_bindings.cpp
+    #${NVFUSER_SRCS_DIR}/python_frontend/python_bindings.cpp
     ${NVFUSER_SRCS_DIR}/python_frontend/python_bindings_test.cpp
 )
 
@@ -228,7 +229,6 @@ endforeach()
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_BINARY_DIR}/include")
 
 # -- tests
-add_subdirectory(${NVFUSER_ROOT}/third_party/googletest)
 
 set(JIT_TEST_SRCS)
 list(APPEND JIT_TEST_SRCS ${NVFUSER_ROOT}/test/test_nvfuser_fusion_definition.cpp)
