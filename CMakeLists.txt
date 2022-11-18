@@ -136,26 +136,30 @@ list(APPEND NVFUSER_SRCS
     ${NVFUSER_SRCS_DIR}/python_frontend/python_bindings.cpp
 )
 
-add_library(${PROJECT_NAME} SHARED ${NVFUSER_SRCS})
-# not sure why I needed these
-target_compile_options(${PROJECT_NAME} PRIVATE ${OpenMP_CXX_OPTIONS})
-target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenMP_CXX_LIBRARIES})
+set(NVFUSER_CODEGEN ${PROJECT_NAME}_codegen)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ${TORCH_LIBRARIES} ${CUDA_NVRTC_LIB} ${PYTHON_LIBRARIES} ${TORCH_PYTHON_LIBRARY})
-target_include_directories(${PROJECT_NAME}
+add_library(${NVFUSER_CODEGEN} SHARED ${NVFUSER_SRCS})
+# not sure why I needed these
+target_compile_options(${NVFUSER_CODEGEN} PRIVATE ${OpenMP_CXX_OPTIONS})
+target_link_libraries(${NVFUSER_CODEGEN} PRIVATE ${OpenMP_CXX_LIBRARIES})
+
+target_link_libraries(${NVFUSER_CODEGEN} PRIVATE ${TORCH_LIBRARIES} ${CUDA_NVRTC_LIB} ${PYTHON_LIBRARIES} ${TORCH_PYTHON_LIBRARY})
+target_include_directories(${NVFUSER_CODEGEN}
 	                   PUBLIC $<BUILD_INTERFACE:${NVFUSER_SRCS_DIR}>
                            PRIVATE ${CUDA_INCLUDE_DIRS}
 			   PRIVATE ${PYTHON_INCLUDE_DIRS})
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
+set_property(TARGET ${NVFUSER_CODEGEN} PROPERTY CXX_STANDARD 14)
 
 # --- pybind11
+set(NVFUSER_PYTHON ${PROJECT_NAME})
+
 set(NVFUSER_PYTHON_SRCS)
 list(APPEND NVFUSER_PYTHON_SRCS
-    #${NVFUSER_SRCS_DIR}/python_frontend/python_bindings.cpp
+	#${NVFUSER_SRCS_DIR}/python_frontend/python_bindings.cpp
     ${NVFUSER_SRCS_DIR}/python_frontend/python_bindings_test.cpp
 )
 
-pybind11_add_module(nvfuser_python ${NVFUSER_PYTHON_SRCS})
+pybind11_add_module(${NVFUSER_PYTHON} ${NVFUSER_PYTHON_SRCS})
 
 # --- generate runtime files
 
@@ -218,7 +222,7 @@ foreach(src ${NVFUSER_RUNTIME_FILES})
     COMMAND ${PYTHON_EXECUTABLE} ${NVFUSER_STRINGIFY_TOOL} -i ${src} -o ${dst}
   )
   add_custom_target(nvfuser_rt_${filename} DEPENDS ${dst})
-  add_dependencies(${PROJECT_NAME} nvfuser_rt_${filename})
+  add_dependencies(${NVFUSER_CODEGEN} nvfuser_rt_${filename})
 
   # also generate the resource headers during the configuration step
   # (so tools like clang-tidy can run w/o requiring a real build)
@@ -226,7 +230,7 @@ foreach(src ${NVFUSER_RUNTIME_FILES})
     ${PYTHON_EXECUTABLE} ${NVFUSER_STRINGIFY_TOOL} -i ${src} -o ${dst})
 endforeach()
 
-target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_BINARY_DIR}/include")
+target_include_directories(${NVFUSER_CODEGEN} PRIVATE "${CMAKE_BINARY_DIR}/include")
 
 # -- tests
 
@@ -252,7 +256,7 @@ add_executable(tests ${NVFUSER_ROOT}/test/main.cpp ${JIT_TEST_SRCS})
 target_compile_definitions(tests PRIVATE USE_GTEST)
 target_compile_definitions(tests PRIVATE USE_CUDA)
 target_include_directories(tests PRIVATE "${NVFUSER_ROOT}")
-target_link_libraries(tests PRIVATE ${TORCH_LIBRARIES} ${PROJECT_NAME} gtest_main gmock_main)
+target_link_libraries(tests PRIVATE ${TORCH_LIBRARIES} ${NVFUSER_CODEGEN} gtest_main gmock_main)
 
 install(TARGETS tests DESTINATION bin)
 
@@ -260,5 +264,5 @@ install(TARGETS tests DESTINATION bin)
 
 # exporting library for find_package
 export(TARGETS
-       ${PROJECT_NAME}
-       FILE "${CMAKE_BINARY_DIR}/${PROJECT_NAME}Config.cmake")
+       ${NVFUSER_CODEGEN}
+       FILE "${CMAKE_BINARY_DIR}/${NVFUSER_CODEGEN}Config.cmake")
