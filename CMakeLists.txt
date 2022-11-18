@@ -145,6 +145,17 @@ target_include_directories(${PROJECT_NAME}
 			   PRIVATE ${PYTHON_INCLUDE_DIRS})
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
 
+# --- pybind11
+add_subdirectory(${NVFUSER_ROOT}/third_party/pybind11)
+
+set(NVFUSER_PYTHON_SRCS)
+list(APPEND NVFUSER_PYTHON_SRCS
+	#${NVFUSER_SRCS_DIR}/python_frontend/python_bindings.cpp
+    ${NVFUSER_SRCS_DIR}/python_frontend/python_bindings_test.cpp
+)
+
+pybind11_add_module(nvfuser_python ${NVFUSER_PYTHON_SRCS})
+
 # --- generate runtime files
 
 if(USE_ROCM)
